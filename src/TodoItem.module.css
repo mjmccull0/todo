@@ -1,0 +1,72 @@
+.todoItem {
+  display: flex;
+  flex-direction: column;
+  /*
+  height: 300px;
+  */
+  max-width: 700px;
+  margin: 0  auto 1rem;
+  padding: 1rem;
+  background: #FFFFFF;
+}
+
+.name {
+  display: flex;
+}
+
+.name > div {
+  flex-grow: 1;
+}
+
+.name > input[type=checkbox] {
+  align-self: center;
+}
+
+.name input[type=text] {
+  height: 34px;
+}
+
+.notes {
+  display: flex;
+  flex-direction: column;
+}
+
+.notes label {
+  display: block;
+}
+
+.notes textarea {
+  width: 100%;
+  flex-grow: 1;
+}
+
+.details {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 1fr 40%;
+  grid-gap: 1rem;
+  /*
+  max-height: 0;
+  overflow: hidden;
+  */
+}
+
+.details label {
+  padding: 1rem 0;
+}
+
+.details > div {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.todo_actions {
+  position: relative;
+  height: 100%;
+}
+.todo_actions button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
