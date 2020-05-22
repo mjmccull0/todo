@@ -1,0 +1,21 @@
+label {
+  display: block;
+}
+.priority {
+  width: auto;
+}
+
+.close {
+  height: 64px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.open {
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.priority select {
+  width: fill-available;
+}

@@ -1,0 +1,93 @@
+
+.todoItem {
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  max-width: 700px;
+  margin: 0  auto 1rem;
+  padding: 1rem;
+  background: #FFFFFF;
+}
+
+.name {
+  display: flex;
+}
+.name_input_wrapper {
+  padding: 0 0.75rem;
+}
+
+.name > div {
+  flex-grow: 1;
+}
+
+.name > input[type=checkbox] {
+  align-self: center;
+}
+
+.name input[type=text] {
+  height: 34px;
+  outline: none;
+  border: none;
+}
+.dragIcon {
+  background: none;
+  border: none;
+  outline: none;
+}
+.dragIcon:hover {
+  cursor: grab;
+}
+/*cursor: grabbing;*/
+
+.name input[type=text]:hover {
+  outline: auto;
+}
+
+.name input[type=text]:focus {
+  outline: none;
+}
+
+.notes {
+  display: flex;
+  flex-direction: column;
+}
+
+.notes label {
+  display: block;
+}
+
+.notes textarea {
+  width: 100%;
+  flex-grow: 1;
+}
+
+.details {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 1fr 40%;
+  grid-gap: 1rem;
+  /*
+  max-height: 0;
+  overflow: hidden;
+  */
+}
+
+.details label {
+  padding: 1rem 0;
+}
+
+.details > div {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.todo_actions {
+  position: relative;
+  height: 100%;
+}
+.todo_actions button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
