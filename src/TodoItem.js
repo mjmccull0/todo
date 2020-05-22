@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { CSSTransition } from 'react-transition-group';
 import Button from './Button';
 import Checkbox from './Checkbox';
 import Priority from './Priority';
 import DueDate from './DueDate';
+import ArrowButton from './ArrowButton';
 import styles from './TodoItem.module.css';
 import './TodoItem.css';
 
@@ -15,6 +15,7 @@ const TodoItem = (props) => {
   const [notes, setNotes] = useState(props.notes);
   const [priority, setPriority] = useState(props.priority);
   const [expandDetail, setExpandDetail] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   const toggleComplete = () => {
     setComplete(!complete);
@@ -29,49 +30,51 @@ const TodoItem = (props) => {
   }
 
   const toggleDetails = () => {
+    setExpanded(!expanded);
     setExpandDetail(!expandDetail);
   }
 
   return (
     <>
+      <div className={expanded ? 'open' : 'close'}>
       <div className={styles.todoItem} key={props.id}>
         <div className={styles.name}>
+          <Button
+            label="&#9776;"
+            className={styles.dragIcon}
+            onClick={toggleDetails}
+          />
           <Checkbox
             toggleCheckbox={toggleComplete}
             checked={complete}
           />
-          <div>
+          <div className={styles.name_input_wrapper}>
             <input type="text"
               value={name}
               onChange={handleChangeName}
             />
           </div>
-          <Button label="toggle" onClick={toggleDetails} />
+          <ArrowButton
+            direction={expanded ? 'up' : 'down'}
+            onClick={toggleDetails}
+          />
         </div>
-        <CSSTransition
-          nodeRef={nodeRef}
-          in={expandDetail}
-          timeout={200}
-          classNames="list-transition"
-          unmountOnExit
-          appear
-        >
-          <div className={styles.details} ref={nodeRef}>
-            <div className={styles.notes}>
-              <label>
-                Notes
-              </label>
-              <textarea value={notes} onChange={handleChangeNotes} />
-            </div>
-            <div>
-              <DueDate />
-              <Priority />
-              <div className={styles.todo_actions}>
-                <Button label="Delete" />
-              </div>
+        <div className={styles.details} ref={nodeRef}>
+          <div className={styles.notes}>
+            <label>
+              Notes
+            </label>
+            <textarea value={notes} onChange={handleChangeNotes} />
+          </div>
+          <div>
+            <DueDate />
+            <Priority />
+            <div className={styles.todo_actions}>
+              <Button label="Delete" />
             </div>
           </div>
-        </CSSTransition>
+        </div>
+      </div>
       </div>
     </>
   );
