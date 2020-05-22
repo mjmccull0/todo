@@ -17,5 +17,5 @@ label {
 }
 
 .priority select {
-  width: fill-available;
+  width: stretch;
 }
