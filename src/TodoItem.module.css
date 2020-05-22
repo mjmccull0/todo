@@ -1,9 +1,8 @@
+
 .todoItem {
   display: flex;
   flex-direction: column;
-  /*
   height: 300px;
-  */
   max-width: 700px;
   margin: 0  auto 1rem;
   padding: 1rem;
@@ -12,6 +11,9 @@
 
 .name {
   display: flex;
+}
+.name_input_wrapper {
+  padding: 0 0.75rem;
 }
 
 .name > div {
@@ -24,6 +26,25 @@
 
 .name input[type=text] {
   height: 34px;
+  outline: none;
+  border: none;
+}
+.dragIcon {
+  background: none;
+  border: none;
+  outline: none;
+}
+.dragIcon:hover {
+  cursor: grab;
+}
+/*cursor: grabbing;*/
+
+.name input[type=text]:hover {
+  outline: auto;
+}
+
+.name input[type=text]:focus {
+  outline: none;
 }
 
 .notes {
