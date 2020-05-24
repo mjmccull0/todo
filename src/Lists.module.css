@@ -1,0 +1,10 @@
+.user_lists {
+  background: #FFFFFF;
+  list-style: none;
+  padding: 0;
+}
+.list {
+  height: 3rem;
+  display: flex;
+  align-items: center;
+}
