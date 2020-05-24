@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import './ToDo.css';
 import AppView from './AppView';
 import Lists from './Lists';
 import TodoItems from './TodoItems';
 import MainMenu from './MainMenu';
 
-const lists = [
+const usersLists = [
   {
     id: 0,
     name: "Personal",
@@ -42,22 +41,20 @@ const lists = [
 ]
 
 function ToDo() {
-  const [state, setState] = useState({
-    lists,
-    activeList: null
-  });
+  const [lists, setLists] = useState(usersLists);
+  const [activeList, setActiveList] = useState(null);
 
-  const activeContent = () => {
-    if (state.activeList) {
-      return <TodoItems items={state.activeList.items} />
+  const getActiveView = () => {
+    if (activeList) {
+      return <TodoItems items={activeList.items} />
     }
-    return <Lists lists={state.lists} />
+    return <Lists lists={lists} />
   }
 
   return (
     <AppView>
       <MainMenu />
-      {activeContent()}
+      {getActiveView()}
     </AppView>
   );
 }
