@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './Lists.module.css';
 
 const Lists = (props = {lists: []}) => {
   if (props.lists.length === 0) {
@@ -6,9 +7,13 @@ const Lists = (props = {lists: []}) => {
   }
 
   return (
-    <ul className="lists">
+    <ul className={styles.user_lists}>
       {props.lists.map(list => (
-        <li key={list.id}>{list.name}</li>
+        <li key={list.id}>
+          <div className={styles.list}>
+            {list.name}
+          </div>
+        </li>
       ))}
     </ul>
   );
