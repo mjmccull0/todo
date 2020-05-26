@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Checkbox from './Checkbox';
+import List from './List';
 import styles from './Lists.module.css';
 
 const Lists = (props = {lists: []}) => {
@@ -8,23 +9,11 @@ const Lists = (props = {lists: []}) => {
     return null;
   }
 
-  const toggleComplete = () => {
-    // Toggle todo list as done.
-  }
-
   return (
     <ul className={styles.user_lists}>
       {props.lists.map(list => (
         <li key={list.id}>
-          <div className={styles.list}>
-            <Checkbox
-              toggleCheckbox={toggleComplete}
-              checked={list.complete}
-            />
-            <div className={styles.name_wrapper}>
-              {list.name}
-            </div>
-          </div>
+          <List list={list} />
         </li>
       ))}
     </ul>
