@@ -1,0 +1,37 @@
+.create_list_form {
+  padding: 1rem;
+  background: #e7e5e3;
+  position: absolute;
+  top: 2.5rem;
+  left: 0.7rem;
+  width: 20rem;
+}
+.create_list_form input,
+.create_list_form label {
+  margin-bottom: 1rem;
+}
+
+.create_list_form input {
+  width: stretch;
+}
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+}
+.actions button {
+  width: stretch;
+}
+
+.create_list_form:before {
+  content: "";
+  position: absolute;
+  top: -1rem;
+  border-style: solid;
+  border-width: 0 1rem 1rem;
+  border-color: #e7e5e3 transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+}
+
