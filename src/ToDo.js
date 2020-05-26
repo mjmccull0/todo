@@ -14,16 +14,19 @@ const usersLists = [
         name: "ABC",
         notes: "About ABC",
         dueDate: new Date(),
-        priority: "None"
+        priority: "None",
+        complete: true
       },
       {
         id: 1,
         name: "DEF",
         notes: "",
         dueDate: new Date(),
-        priority: "" 
+        priority: "",
+        complete: false
       }
     ],
+    complete: false
   },
   {
     id: 1,
@@ -34,9 +37,11 @@ const usersLists = [
         name: "XYZ",
         notes: "About XYZ",
         dueDate: "",
-        priority: ""
+        priority: "",
+        complete: false
       }
     ],
+    complete: false
   },
 ]
 
