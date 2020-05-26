@@ -66,10 +66,6 @@
   display: grid;
   grid-template-columns: 1fr 40%;
   grid-gap: 1rem;
-  /*
-  max-height: 0;
-  overflow: hidden;
-  */
 }
 
 .details label {
