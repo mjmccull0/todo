@@ -1,12 +1,19 @@
 import React from 'react';
 import ListFilter from './ListFilter';
 import Button from './Button';
+import CreateList from './CreateList';
+import styles from './MainMenu.module.css';
+
 
 const MainMenu = (props = {}) => {
   return (
-    <div className="main-menu">
-      <Button label="New List" />
+    <div className={styles.main_menu}>
+      <div>
+        <CreateList />
+      </div>
       <ListFilter />
+      <div>
+      </div>
     </div>
   );
 }
