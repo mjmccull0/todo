@@ -3,3 +3,9 @@
   display: flex;
   align-items: center;
 }
+.name_wrapper {
+  width: stretch;
+  height: stretch;
+  display: flex;
+  align-items: center;
+}
