@@ -1,64 +1,45 @@
 import React, { useState } from 'react';
 import AppView from './AppView';
-import Lists from './Lists';
 import TodoItems from './TodoItems';
-import MainMenu from './MainMenu';
-
-const usersLists = [
-  {
-    id: 0,
-    name: "Personal",
-    items: [
-      {
-        id: 0,
-        name: "ABC",
-        notes: "About ABC",
-        dueDate: new Date(),
-        priority: "None",
-        complete: true
-      },
-      {
-        id: 1,
-        name: "DEF",
-        notes: "",
-        dueDate: new Date(),
-        priority: "",
-        complete: false
-      }
-    ],
-    complete: false
-  },
-  {
-    id: 1,
-    name: "Honey Do",
-    items: [
-      {
-        id: 0,
-        name: "XYZ",
-        notes: "About XYZ",
-        dueDate: "",
-        priority: "",
-        complete: false
-      }
-    ],
-    complete: false
-  },
-]
+import TodoItemsMenu from './TodoItemsMenu';
+import ListsMenu from './ListsMenu';
+import Lists from './Lists';
+import { useLists } from './useLists';
 
 function ToDo() {
-  const [lists, setLists] = useState(usersLists);
+  const [lists, getItems, getList] = useLists();
   const [activeList, setActiveList] = useState(null);
+
+  const goToLists = () => {
+    setActiveList(null);
+  }
+
+  const selectList = (listId) => {
+    setActiveList(getList(listId));
+  }
 
   const getActiveView = () => {
     if (activeList) {
-      return <TodoItems items={activeList.items} />
+      return (
+        <>
+          <TodoItemsMenu goBackToLists={goToLists} />
+          <TodoItems items={activeList.items} />
+        </>
+      )
     }
-    return <Lists lists={lists} />
+    return (
+      <>
+        <ListsMenu />
+        <Lists
+          lists={lists}
+          onSelect={(listId) => selectList(listId)}
+        />
+      </>
+    );
   }
 
   return (
     <AppView>
-      <MainMenu />
       {getActiveView()}
     </AppView>
   );
