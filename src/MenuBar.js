@@ -2,20 +2,15 @@ import React from 'react';
 import ListFilter from './ListFilter';
 import Button from './Button';
 import CreateList from './CreateList';
-import styles from './MainMenu.module.css';
+import styles from './MenuBar.module.css';
 
 
-const MainMenu = (props = {}) => {
+const MenuBar = (props = {}) => {
   return (
     <div className={styles.main_menu}>
-      <div>
-        <CreateList />
-      </div>
-      <ListFilter />
-      <div>
-      </div>
+      {props.children}
     </div>
   );
 }
 
-export default MainMenu; 
+export default MenuBar; 
