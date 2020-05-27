@@ -13,7 +13,7 @@ const Lists = (props = {lists: []}) => {
     <ul className={styles.user_lists}>
       {props.lists.map(list => (
         <li key={list.id}>
-          <List list={list} />
+          <List list={list} {...props} />
         </li>
       ))}
     </ul>
