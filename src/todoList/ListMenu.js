@@ -1,6 +1,6 @@
 import React from 'react';
+import Button from 'common/Button';
 import ListFilter from './ListFilter';
-import Button from './Button';
 
 const ListMenu = (props = {}) => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import Checkbox from './Checkbox';
+import Checkbox from 'common/Checkbox';
 import styles from './List.module.css';
 
 const List = ({list, onSelectList, onListClick, ...props}) => {

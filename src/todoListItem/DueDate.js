@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from './Button';
-import DatePicker from './DatePicker';
+import Button from 'common/Button';
+import DatePicker from 'common/DatePicker';
 import styles from './DueDate.module.css';
 
 const DueDate = (props) => (

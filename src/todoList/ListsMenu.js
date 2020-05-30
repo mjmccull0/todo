@@ -1,5 +1,5 @@
 import React from 'react';
-import MenuBar from './MenuBar';
+import MenuBar from 'common/MenuBar';
 import ListFilter from './ListFilter';
 import CreateList from './CreateList';
 

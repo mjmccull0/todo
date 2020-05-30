@@ -1,5 +1,5 @@
 import React from 'react';
-import ArrowButton from './ArrowButton';
+import ArrowButton from 'common/ArrowButton';
 import styles from './TodoItemsMenu.module.css';
 
 const TodoItemsMenu = (props) => (
