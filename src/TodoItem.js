@@ -11,10 +11,7 @@ const TodoItem = (props) => {
   const nodeRef = React.useRef(null);
   const [name, setName] = useState(props.name);
   const [complete, setComplete] = useState(props.complete);
-  const [dueDate, setDueDate] = useState(props.dueDate);
   const [notes, setNotes] = useState(props.notes);
-  const [priority, setPriority] = useState(props.priority);
-  const [expandDetail, setExpandDetail] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
   const toggleComplete = () => {
@@ -31,7 +28,6 @@ const TodoItem = (props) => {
 
   const toggleDetails = () => {
     setExpanded(!expanded);
-    setExpandDetail(!expandDetail);
   }
 
   return (

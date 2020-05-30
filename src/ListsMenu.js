@@ -8,7 +8,7 @@ const ListsMenu = (props = {}) => {
   return (
     <MenuBar>
       <div>
-        <CreateList />
+        <CreateList {...props} />
       </div>
       <ListFilter />
       <div>

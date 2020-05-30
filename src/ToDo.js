@@ -4,18 +4,35 @@ import TodoItems from './TodoItems';
 import TodoItemsMenu from './TodoItemsMenu';
 import ListsMenu from './ListsMenu';
 import Lists from './Lists';
-import { useLists } from './useLists';
+import { useTodoLists } from './useLists';
+
 
 function ToDo() {
-  const [lists, getItems, getList] = useLists();
+  const [state, dispatch] = useTodoLists({
+    url: 'http://localhost:3000/data.json'
+  });
   const [activeList, setActiveList] = useState(null);
 
   const goToLists = () => {
     setActiveList(null);
   }
 
-  const selectList = (listId) => {
-    setActiveList(getList(listId));
+  const selectList = ({id}) => {
+    dispatch({
+      type: 'SET_SELECTED_LISTS',
+      listId: id
+    });
+  }
+
+  const showTodoListItems = (listId) => {
+    setActiveList(state.lists[listId]);
+  }
+
+  const createTodoList = (listName) => {
+    dispatch({
+      type: 'ADD_LIST',
+      listName
+    });
   }
 
   const getActiveView = () => {
@@ -29,10 +46,12 @@ function ToDo() {
     }
     return (
       <>
-        <ListsMenu />
+        <ListsMenu createTodoList={(list) => createTodoList(list)}/>
         <Lists
-          lists={lists}
-          onSelect={(listId) => selectList(listId)}
+          lists={state.lists}
+          onListClick={(listId) => showTodoListItems(listId)}
+          onSelectList={(listId) => selectList(listId)}
+          selectedLists={state.selectedLists}
         />
       </>
     );

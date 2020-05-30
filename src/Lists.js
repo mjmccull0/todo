@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import Checkbox from './Checkbox';
+import React from 'react';
 import List from './List';
 import styles from './Lists.module.css';
 
