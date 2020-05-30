@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import AppView from './AppView';
-import TodoItems from './TodoItems';
-import TodoItemsMenu from './TodoItemsMenu';
-import ListsMenu from './ListsMenu';
-import Lists from './Lists';
-import { useTodoLists } from './useLists';
+import TodoItems from 'todoListItem/TodoItems';
+import TodoItemsMenu from 'todoListItem/TodoItemsMenu';
+import ListsMenu from 'todoList/ListsMenu';
+import Lists from 'todoList/Lists';
+import { useTodoLists } from 'todoList/useLists';
 
 
 function ToDo() {

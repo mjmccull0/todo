@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import TextInput from './TextInput';
+import Button from 'common/Button';
+import TextInput from 'common/TextInput';
 import styles from './CreateList.module.css';
-import Button from './Button';
 
 
 const CreateList = ({createTodoList, props}) => {

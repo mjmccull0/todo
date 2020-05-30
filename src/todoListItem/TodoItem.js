@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Button from './Button';
-import Checkbox from './Checkbox';
+import Button from 'common/Button';
+import Checkbox from 'common/Checkbox';
+import ArrowButton from 'common/ArrowButton';
 import Priority from './Priority';
 import DueDate from './DueDate';
-import ArrowButton from './ArrowButton';
 import styles from './TodoItem.module.css';
 import './TodoItem.css';
 
