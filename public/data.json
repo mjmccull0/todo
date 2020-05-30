@@ -1,0 +1,43 @@
+[
+   {
+      "id":0,
+      "name":"Personal",
+      "complete":false,
+      "items":[
+         {
+            "id":0,
+            "name":"ABC",
+            "notes":"About ABC",
+            "dueDate":"",
+            "priority":"None",
+            "complete":true,
+            "listId":0
+         },
+         {
+            "id":1,
+            "name":"DEF",
+            "notes":"",
+            "dueDate":"",
+            "priority":"",
+            "complete":false,
+            "listId":0
+         }
+      ]
+   },
+   {
+      "id":1,
+      "name":"Honey Do",
+      "complete":false,
+      "items":[
+         {
+            "id":2,
+            "name":"XYZ",
+            "notes":"About XYZ",
+            "dueDate":"",
+            "priority":"",
+            "complete":false,
+            "listId":1
+         }
+      ]
+   }
+]

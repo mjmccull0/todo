@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import Checkbox from './Checkbox';
+import React from 'react';
 import List from './List';
 import styles from './Lists.module.css';
 
@@ -13,7 +12,7 @@ const Lists = (props = {lists: []}) => {
     <ul className={styles.user_lists}>
       {props.lists.map(list => (
         <li key={list.id}>
-          <List list={list} />
+          <List list={list} {...props} />
         </li>
       ))}
     </ul>

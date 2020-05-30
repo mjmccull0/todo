@@ -1,64 +1,64 @@
 import React, { useState } from 'react';
 import AppView from './AppView';
-import Lists from './Lists';
 import TodoItems from './TodoItems';
-import MainMenu from './MainMenu';
+import TodoItemsMenu from './TodoItemsMenu';
+import ListsMenu from './ListsMenu';
+import Lists from './Lists';
+import { useTodoLists } from './useLists';
 
-const usersLists = [
-  {
-    id: 0,
-    name: "Personal",
-    items: [
-      {
-        id: 0,
-        name: "ABC",
-        notes: "About ABC",
-        dueDate: new Date(),
-        priority: "None",
-        complete: true
-      },
-      {
-        id: 1,
-        name: "DEF",
-        notes: "",
-        dueDate: new Date(),
-        priority: "",
-        complete: false
-      }
-    ],
-    complete: false
-  },
-  {
-    id: 1,
-    name: "Honey Do",
-    items: [
-      {
-        id: 0,
-        name: "XYZ",
-        notes: "About XYZ",
-        dueDate: "",
-        priority: "",
-        complete: false
-      }
-    ],
-    complete: false
-  },
-]
 
 function ToDo() {
-  const [lists, setLists] = useState(usersLists);
+  const [state, dispatch] = useTodoLists({
+    url: 'http://localhost:3000/data.json'
+  });
   const [activeList, setActiveList] = useState(null);
+
+  const goToLists = () => {
+    setActiveList(null);
+  }
+
+  const selectList = ({id}) => {
+    dispatch({
+      type: 'SET_SELECTED_LISTS',
+      listId: id
+    });
+  }
+
+  const showTodoListItems = (listId) => {
+    setActiveList(state.lists[listId]);
+  }
+
+  const createTodoList = (listName) => {
+    dispatch({
+      type: 'ADD_LIST',
+      listName
+    });
+  }
 
   const getActiveView = () => {
     if (activeList) {
-      return <TodoItems items={activeList.items} />
+      return (
+        <>
+          <TodoItemsMenu goBackToLists={goToLists} />
+          <TodoItems items={activeList.items} />
+        </>
+      )
     }
-    return <Lists lists={lists} />
+    return (
+      <>
+        <ListsMenu createTodoList={(list) => createTodoList(list)}/>
+        <Lists
+          lists={state.lists}
+          onListClick={(listId) => showTodoListItems(listId)}
+          onSelectList={(listId) => selectList(listId)}
+          selectedLists={state.selectedLists}
+        />
+      </>
+    );
   }
 
   return (
     <AppView>
-      <MainMenu />
       {getActiveView()}
     </AppView>
   );

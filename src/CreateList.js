@@ -4,7 +4,7 @@ import styles from './CreateList.module.css';
 import Button from './Button';
 
 
-const CreateList = () => {
+const CreateList = ({createTodoList, props}) => {
   const [listName, setListName] = useState(null);
   const [listFormOpen, setListFormOpen] = useState(false);
 
@@ -21,7 +21,7 @@ const CreateList = () => {
   }
 
   const create = () => {
-    // Implement create new list.
+    createTodoList(listName);
     closeCreateListForm();
   }
 
