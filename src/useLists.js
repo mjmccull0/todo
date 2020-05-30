@@ -1,68 +1,79 @@
-import React, { useState } from 'react';
+import { useEffect, useReducer } from 'react';
 
-const initialLists = [
-  {
-    id: 0,
-    name: "Personal",
-    complete: false,
-    items: [
-      {
-        id: 0,
-        name: "ABC",
-        notes: "About ABC",
-        dueDate: new Date(),
-        priority: "None",
-        complete: true,
-        listId: 0
-      },
-      {
-        id: 1,
-        name: "DEF",
-        notes: "",
-        dueDate: new Date(),
-        priority: "",
+const initialState = {
+  loading: false,
+  error: false,
+  lists: [],
+  selectedLists: []
+}
+
+function todoListReducer(state, action) {
+  switch (action.type) {
+    case 'ADD_LIST': {
+      const list = {
+        id: state.lists.length,
+        name: action.listName,
         complete: false,
-        listId: 0
-      },
-    ]
-  },
-  {
-    id: 1,
-    name: "Honey Do",
-    complete: false,
-    items: [
-      {
-        id: 2,
-        name: "XYZ",
-        notes: "About XYZ",
-        dueDate: "",
-        priority: "",
-        complete: false,
-        listId: 1
+        items: []
+      };
+      state.lists.push(list);
+      return {...state};
+    }
+    case 'SET_SELECTED_LISTS': {
+      let selected = state.selectedLists;
+      if (state.selectedLists.includes(action.listId)) {
+        selected = state.selectedLists.filter(id => id !== action.listId);
+      } else {
+        selected = [...selected, action.listId];
       }
-    ]
-  },
-]
 
-const list_map = new Map();
-for (let list of initialLists) {
-  list_map.set(list.id, list);
+      return {...state, selectedLists: [...selected]};
+    }
+    case 'LOADING': {
+      return {
+        ...state,
+        loading: action.loading 
+      }
+    }
+    case 'ERROR': {
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      }
+    }
+    case 'SET_LISTS': {
+      return {
+        loading: false,
+        error: false,
+        lists: action.lists,
+        selectedLists: []
+      }
+    }
+    default: {
+      throw new Error(`Unhandled action type: ${action.type}`);
+    }
+  }
 }
 
-export const useLists = () => {
-  const [lists, setLists] = useState(list_map);
-
-  const getLists = () => {
-    return [...lists.values()]
-  }
-
-  const getList = (listId) => {
-    return lists.get(listId);
-  }
-
-  const getItems = (listId) => {
-    return lists.get(listId).items;
-  }
-
-  return [getLists(), getItems, getList];
+const useTodoLists = ({ url }) => {
+  const [state, dispatch] = useReducer(todoListReducer, initialState);
+  useEffect(() => {
+    const fetchLists = async () => {
+      try {
+        const response = await fetch(url);
+        const lists = await response.json();
+        dispatch({
+          type: 'SET_LISTS',
+          lists 
+        });
+      } catch (error) {
+        dispatch({ type: 'ERROR', error });
+      }
+    };
+    fetchLists();
+  }, [url]);
+  return [state, dispatch];
 }
+
+export { useTodoLists, todoListReducer }; 
