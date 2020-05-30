@@ -6,17 +6,17 @@
       "items":[
          {
             "id":0,
-            "name":"ABC",
-            "notes":"About ABC",
+            "name":"Find out how socks disappear in the washing machine",
+            "notes":"",
             "dueDate":"",
             "priority":"none",
-            "complete":true,
+            "complete": false,
             "position": 0,
             "listId":0
          },
          {
             "id":1,
-            "name":"DEF",
+            "name":"Wash the car",
             "notes":"",
             "dueDate":"",
             "priority":"low",
@@ -26,7 +26,7 @@
          },
          {
             "id":2,
-            "name":"GHI",
+            "name":"Mow lawn",
             "notes":"",
             "dueDate":"",
             "priority":"medium",
@@ -36,8 +36,8 @@
          },
          {
             "id":3,
-            "name":"JKL",
-            "notes":"",
+            "name":"Buy toilet paper",
+            "notes":"Acceptable alternatives: tissues, paper napkins, or paper towels.",
             "dueDate":"",
             "priority":"high",
             "complete":false,

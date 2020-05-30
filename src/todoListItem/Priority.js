@@ -1,13 +1,15 @@
 import React from 'react';
 import Select from 'common/Select';
 
-const Priority = (props) => (
-  <div className="priority">
-    <label>
-      Priority
-    </label>
-    <Select />
-  </div>
-)
+const Priority = ({priority, ...props}) => {
+  return (
+    <div className="priority">
+      <label>
+        Priority
+      </label>
+      <Select value={priority} {...props} />
+    </div>
+  );
+}
 
 export default Priority;
