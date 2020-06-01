@@ -1,0 +1,23 @@
+.createTodoItem {
+  height: 64px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 700px;
+  background: #FFFFFF;
+  margin: 0 auto 1rem;
+  border-left: 0.4rem solid transparent;
+  padding: 1rem;
+}
+
+.createTodoItem input {
+  outline: none;
+  border: none;
+}
+
+.addTodoItemInput {
+  width: stretch;
+  padding-left: 0.5rem;
+}
