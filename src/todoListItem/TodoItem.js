@@ -38,7 +38,13 @@ const TodoItem = (props) => {
   return (
     <>
       <div className={expanded ? 'open' : 'close'}>
-        <div className={`${styles.todoItem} ${styles[priority]}`} key={props.id}>
+        <div className={`
+            ${styles.todoItem}
+            ${styles[priority]}
+            ${complete ? styles.complete : ''}
+          `}
+           key={props.id}
+        >
           <div className={styles.name}>
             <Button
               label="&#9776;"

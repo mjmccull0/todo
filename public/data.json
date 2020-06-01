@@ -10,7 +10,7 @@
             "notes":"",
             "dueDate":"",
             "priority":"none",
-            "complete": false,
+            "complete": true,
             "position": 0,
             "listId":0
          },
