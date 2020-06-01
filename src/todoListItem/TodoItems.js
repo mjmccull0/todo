@@ -1,8 +1,17 @@
 import React from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import CreateTodoItem from './CreateTodoItem';
 import TodoItem from './TodoItem';
 
-const TodoItems = ({items, props}) => {
+const TodoItems = (props) => {
+  const listId = props.listId;
+  const items = props.items;
+
+  // TODO: Refactor
+  const handleEnterKeyPress = (itemName) => {
+    props.onCreateTodoItem({listId, item: {name: itemName}});
+  }
+
   const onDragEnd = result => {
     // Documentation says onDragEnd is necessary.  Probably a good place
     // to trigger saving state for the order of the todo list items.
@@ -14,6 +23,9 @@ const TodoItems = ({items, props}) => {
   // implementation of drag and drop needs to replace it.
   return (
     <>
+      <CreateTodoItem
+        onEnterKeyPress={(todoName) => handleEnterKeyPress(todoName)}
+      />
       <DragDropContext onDragEnd={onDragEnd}>
          <Droppable droppableId="0">
            {(provided, snapshot) => (
