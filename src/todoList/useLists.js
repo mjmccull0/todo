@@ -29,6 +29,22 @@ function todoListReducer(state, action) {
 
       return {...state, selectedLists: [...selected]};
     }
+    case 'ADD_LIST_ITEM': {
+      const {listId, item} = {...action.payload};
+      const list = state.lists[listId];
+      const newItem = {
+        "id": list.items.length,
+        "name":"",
+        "notes":"",
+        "dueDate":"",
+        "priority":"none",
+        "complete": false,
+        "position": list.items.length,
+        ...item
+      };
+      state.lists[listId].items.push(newItem);
+      return {...state};
+    }
     case 'LOADING': {
       return {
         ...state,

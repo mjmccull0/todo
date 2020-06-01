@@ -5,6 +5,7 @@ import TodoItemsMenu from 'todoListItem/TodoItemsMenu';
 import ListsMenu from 'todoList/ListsMenu';
 import Lists from 'todoList/Lists';
 import { useTodoLists } from 'todoList/useLists';
+import './ToDo.css';
 
 
 function ToDo() {
@@ -25,7 +26,7 @@ function ToDo() {
   }
 
   const showTodoListItems = (listId) => {
-    setActiveList(state.lists[listId]);
+    setActiveList({...state.lists[listId]});
   }
 
   const createTodoList = (listName) => {
@@ -35,15 +36,31 @@ function ToDo() {
     });
   }
 
+  const createTodoItem = (item) => {
+    dispatch({
+      type: 'ADD_LIST_ITEM',
+      payload: item 
+    });
+  }
+
   const getActiveView = () => {
     if (activeList) {
       return (
         <>
           <TodoItemsMenu goBackToLists={goToLists} />
-          <TodoItems items={activeList.items} />
+          <TodoItems
+            listId={activeList.id}
+            items={activeList.items}
+            onCreateTodoItem={(itemName) => createTodoItem(itemName)}
+          />
         </>
       )
     }
+    /* TEMP CODE */
+    if (state.lists[0]) {
+      showTodoListItems(0);
+    }
+    /* END  TEMP CODE */
     return (
       <>
         <ListsMenu createTodoList={(list) => createTodoList(list)}/>
