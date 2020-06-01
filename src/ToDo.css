@@ -4,3 +4,7 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
+
+input[type=text]:focus::placeholder {
+  color: transparent;
+}
