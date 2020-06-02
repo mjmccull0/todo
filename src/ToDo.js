@@ -43,6 +43,13 @@ function ToDo() {
     });
   }
 
+  const reorderTodoItems = (items) => {
+    dispatch({
+      type: 'REORDER_LIST_ITEMS',
+      payload: items 
+    });
+  }
+
   const getActiveView = () => {
     if (activeList) {
       return (
@@ -52,15 +59,11 @@ function ToDo() {
             listId={activeList.id}
             items={activeList.items}
             onCreateTodoItem={(itemName) => createTodoItem(itemName)}
+            onReorderTodoItems={(items) => reorderTodoItems(items)}
           />
         </>
       )
     }
-    /* TEMP CODE */
-    if (state.lists[0]) {
-      showTodoListItems(0);
-    }
-    /* END  TEMP CODE */
     return (
       <>
         <ListsMenu createTodoList={(list) => createTodoList(list)}/>

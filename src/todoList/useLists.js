@@ -7,6 +7,7 @@ const initialState = {
   selectedLists: []
 }
 
+
 function todoListReducer(state, action) {
   switch (action.type) {
     case 'ADD_LIST': {
@@ -45,6 +46,15 @@ function todoListReducer(state, action) {
       state.lists[listId].items.push(newItem);
       return {...state};
     }
+    case 'REORDER_LIST_ITEMS': {
+      const { listId, items } = {...action.payload};
+      items.map((item, index) => {
+        item.position = index;
+        return item;
+      });
+      state.lists[listId].items = items;
+      return {...state};
+    }
     case 'LOADING': {
       return {
         ...state,
@@ -59,6 +69,21 @@ function todoListReducer(state, action) {
       }
     }
     case 'SET_LISTS': {
+      const itemsByPosition = (a, b) => {
+        if (a.position === b.position) {
+          return 0;
+        }
+
+        if (a.position > b.position) {
+          return 1;
+        }
+
+        return -1;
+      }
+
+      action.lists.map(list => {
+        return list.items.sort(itemsByPosition);
+      });
       return {
         loading: false,
         error: false,
