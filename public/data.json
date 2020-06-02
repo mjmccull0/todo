@@ -52,11 +52,11 @@
       "complete":false,
       "items":[
          {
-            "id":2,
+            "id":4,
             "name":"XYZ",
             "notes":"About XYZ",
             "dueDate":"",
-            "priority":"",
+            "priority":"none",
             "complete":false,
             "position": 0,
             "listId":1
