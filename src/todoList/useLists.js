@@ -50,7 +50,7 @@ function todoListReducer(state, action) {
       return {...state};
     }
     case 'DELETE_LIST_ITEM': {
-      const {listId, id} = {...action.payload};
+      const {listId} = {...action.payload};
       const list = state.lists[listId];
       const items = list.items.filter(item => item.id !== action.payload.id);
       state.lists[listId].items = items;
@@ -61,7 +61,7 @@ function todoListReducer(state, action) {
       const {listId, id} = {...action.payload};
       const list = state.lists[listId];
       const items = list.items.map(item => {
-        if (item.id === action.payload.id) { 
+        if (item.id === id) { 
           return {...item, ...action.payload};
         }
         return item;
