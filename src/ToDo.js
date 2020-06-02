@@ -43,9 +43,17 @@ function ToDo() {
   const createTodoItem = (item) => {
     dispatch({
       type: 'ADD_LIST_ITEM',
+      payload: item
+    });
+  }
+
+  const deleteTodoItem = (item) => {
+    dispatch({
+      type: 'DELETE_LIST_ITEM',
       payload: item 
     });
   }
+
 
   const updateTodoItem = (item) => {
     dispatch({
@@ -72,6 +80,7 @@ function ToDo() {
             onCreateTodoItem={(itemName) => createTodoItem(itemName)}
             onReorderTodoItems={(items) => reorderTodoItems(items)}
             update={(item) => updateTodoItem(item)}
+            remove={(item) => deleteTodoItem(item)}
           />
         </>
       )

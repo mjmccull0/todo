@@ -49,6 +49,14 @@ function todoListReducer(state, action) {
       state.activeList = state.lists[listId];
       return {...state};
     }
+    case 'DELETE_LIST_ITEM': {
+      const {listId, id} = {...action.payload};
+      const list = state.lists[listId];
+      const items = list.items.filter(item => item.id !== action.payload.id);
+      state.lists[listId].items = items;
+      state.activeList = state.lists[listId];
+      return {...state};
+    }
     case 'UPDATE_LIST_ITEM': {
       const {listId, id} = {...action.payload};
       const list = state.lists[listId];

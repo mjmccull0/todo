@@ -7,7 +7,7 @@ import DueDate from './DueDate';
 import styles from './TodoItem.module.css';
 import './TodoItem.css';
 
-const TodoItem = ({item, update}) => {
+const TodoItem = ({item, remove, update}) => {
   const nodeRef = React.useRef(null);
   const [expanded, setExpanded] = useState(false);
 
@@ -69,7 +69,7 @@ const TodoItem = ({item, update}) => {
                 onChange={handleUpdate('priority')}
               />
               <div className={styles.todo_actions}>
-                <Button label="Delete" />
+                <Button label="Delete" onClick={() => remove(item)} />
               </div>
             </div>
           </div>

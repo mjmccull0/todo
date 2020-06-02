@@ -4,8 +4,8 @@ import CreateTodoItem from './CreateTodoItem';
 import TodoItem from './TodoItem';
 import reorder from 'util/reorder';
 
-const TodoItems = ({listId, items, onCreateTodoItem, onReorderTodoItems, update}) => {
-
+const TodoItems = (props) => {
+  const {listId, items, onCreateTodoItem, onReorderTodoItems, remove, update} = {...props};
   const handleEnterKeyPress = (itemName) => {
     onCreateTodoItem({listId, item: {name: itemName}});
   }
@@ -48,7 +48,12 @@ const TodoItems = ({listId, items, onCreateTodoItem, onReorderTodoItems, update}
                          {...provided.draggableProps}
                          {...provided.dragHandleProps}
                        >
-                         <TodoItem key={item.id} item={item} update={(item) => update(item)} />
+                         <TodoItem
+                          key={item.id}
+                          item={item}
+                          update={(item) => update(item)}
+                          remove={(item) => remove(item)}
+                         />
                       </div>
                      )}
                    </Draggable>
