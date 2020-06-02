@@ -4,6 +4,7 @@ const initialState = {
   loading: false,
   error: false,
   lists: [],
+  activeList: null,
   selectedLists: []
 }
 
@@ -41,9 +42,26 @@ function todoListReducer(state, action) {
         "priority":"none",
         "complete": false,
         "position": list.items.length,
+        "listId": listId,
         ...item
       };
       state.lists[listId].items.push(newItem);
+      state.activeList = state.lists[listId];
+      return {...state};
+    }
+    case 'UPDATE_LIST_ITEM': {
+      const {listId, id} = {...action.payload};
+      const list = state.lists[listId];
+      const items = list.items.map(item => {
+        if (item.id === action.payload.id) { 
+          return {...item, ...action.payload};
+        }
+        return item;
+      });
+
+      state.lists[listId].items = items;
+      state.activeList = state.lists[listId];
+
       return {...state};
     }
     case 'REORDER_LIST_ITEMS': {
@@ -90,6 +108,12 @@ function todoListReducer(state, action) {
         lists: action.lists,
         selectedLists: []
       }
+    }
+    case 'SET_ACTIVE_LIST': {
+      return {...state, activeList: state.lists[action.payload]};
+    }
+    case 'GO_TO_LISTS': {
+      return {...state, activeList: null};
     }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);

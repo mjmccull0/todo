@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import AppView from './AppView';
 import TodoItems from 'todoListItem/TodoItems';
 import TodoItemsMenu from 'todoListItem/TodoItemsMenu';
@@ -12,10 +12,11 @@ function ToDo() {
   const [state, dispatch] = useTodoLists({
     url: 'http://localhost:3000/data.json'
   });
-  const [activeList, setActiveList] = useState(null);
 
   const goToLists = () => {
-    setActiveList(null);
+    dispatch({
+      type: 'GO_TO_LISTS'
+    });
   }
 
   const selectList = ({id}) => {
@@ -26,7 +27,10 @@ function ToDo() {
   }
 
   const showTodoListItems = (listId) => {
-    setActiveList({...state.lists[listId]});
+    dispatch({
+      type: 'SET_ACTIVE_LIST',
+      payload: listId
+    });
   }
 
   const createTodoList = (listName) => {
@@ -43,6 +47,13 @@ function ToDo() {
     });
   }
 
+  const updateTodoItem = (item) => {
+    dispatch({
+      type: 'UPDATE_LIST_ITEM',
+      payload: item 
+    });
+  }
+
   const reorderTodoItems = (items) => {
     dispatch({
       type: 'REORDER_LIST_ITEMS',
@@ -51,15 +62,16 @@ function ToDo() {
   }
 
   const getActiveView = () => {
-    if (activeList) {
+    if (state.activeList) {
       return (
         <>
           <TodoItemsMenu goBackToLists={goToLists} />
           <TodoItems
-            listId={activeList.id}
-            items={activeList.items}
+            listId={state.activeList.id}
+            items={state.activeList.items}
             onCreateTodoItem={(itemName) => createTodoItem(itemName)}
             onReorderTodoItems={(items) => reorderTodoItems(items)}
+            update={(item) => updateTodoItem(item)}
           />
         </>
       )
