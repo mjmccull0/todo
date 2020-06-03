@@ -3,7 +3,7 @@ import React from 'react';
 const DatePicker = (props) => {
   return (
     <>
-      <input type="date" />
+      <input type="date" {...props} />
     </>
   );
 }

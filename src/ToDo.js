@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import AppView from './AppView';
 import TodoItems from 'todoListItem/TodoItems';
 import TodoItemsMenu from 'todoListItem/TodoItemsMenu';
 import ListsMenu from 'todoList/ListsMenu';
 import Lists from 'todoList/Lists';
 import { useTodoLists } from 'todoList/useLists';
+import './ToDo.css';
 
 
 function ToDo() {
   const [state, dispatch] = useTodoLists({
     url: 'http://localhost:3000/data.json'
   });
-  const [activeList, setActiveList] = useState(null);
 
   const goToLists = () => {
-    setActiveList(null);
+    dispatch({
+      type: 'GO_TO_LISTS'
+    });
   }
 
   const selectList = ({id}) => {
@@ -25,7 +27,10 @@ function ToDo() {
   }
 
   const showTodoListItems = (listId) => {
-    setActiveList(state.lists[listId]);
+    dispatch({
+      type: 'SET_ACTIVE_LIST',
+      payload: listId
+    });
   }
 
   const createTodoList = (listName) => {
@@ -35,12 +40,48 @@ function ToDo() {
     });
   }
 
+  const createTodoItem = (item) => {
+    dispatch({
+      type: 'ADD_LIST_ITEM',
+      payload: item
+    });
+  }
+
+  const deleteTodoItem = (item) => {
+    dispatch({
+      type: 'DELETE_LIST_ITEM',
+      payload: item 
+    });
+  }
+
+
+  const updateTodoItem = (item) => {
+    dispatch({
+      type: 'UPDATE_LIST_ITEM',
+      payload: item 
+    });
+  }
+
+  const reorderTodoItems = (items) => {
+    dispatch({
+      type: 'REORDER_LIST_ITEMS',
+      payload: items 
+    });
+  }
+
   const getActiveView = () => {
-    if (activeList) {
+    if (state.activeList) {
       return (
         <>
           <TodoItemsMenu goBackToLists={goToLists} />
-          <TodoItems items={activeList.items} />
+          <TodoItems
+            listId={state.activeList.id}
+            items={state.activeList.items}
+            onCreateTodoItem={(itemName) => createTodoItem(itemName)}
+            onReorderTodoItems={(items) => reorderTodoItems(items)}
+            update={(item) => updateTodoItem(item)}
+            remove={(item) => deleteTodoItem(item)}
+          />
         </>
       )
     }

@@ -6,10 +6,18 @@
   margin: 0  auto 1rem;
   padding: 1rem;
   background: #FFFFFF;
-  border-left: 0.4rem solid transparent;
+  border-left: 0.4rem solid;
+}
+
+.complete .name input[type=text] {
+  text-decoration: line-through;
 }
 
 /* Todo list item priority colors */
+.none {
+  border-color: transparent;
+}
+
 .low {
   border-color: #3465a4;
 }
@@ -101,5 +109,4 @@
   right: 0;
   bottom: 0;
 }
-
 

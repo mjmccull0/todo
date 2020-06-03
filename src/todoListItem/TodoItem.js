@@ -7,38 +7,33 @@ import DueDate from './DueDate';
 import styles from './TodoItem.module.css';
 import './TodoItem.css';
 
-const TodoItem = (props) => {
+const TodoItem = ({item, remove, update}) => {
   const nodeRef = React.useRef(null);
-  const [name, setName] = useState(props.name);
-  const [complete, setComplete] = useState(props.complete);
-  const [priority, setPriority] = useState(props.priority);
-  const [notes, setNotes] = useState(props.notes);
   const [expanded, setExpanded] = useState(false);
 
   const toggleComplete = () => {
-    setComplete(!complete);
+    update({...item, complete: !item.complete});
   }
 
-  const handleChangeName = (event) => {
-    setName(event.target.value);
-  }
-
-  const handleChangeNotes = (event) => {
-    setNotes(event.target.value);
+  const handleUpdate = prop => (event) => {
+    update({...item, [prop]: event.target.value});
   }
 
   const toggleDetails = () => {
     setExpanded(!expanded);
   }
 
-  const changePriority = (event) => {
-    setPriority(event.target.value);
-  }
 
   return (
     <>
       <div className={expanded ? 'open' : 'close'}>
-        <div className={`${styles.todoItem} ${styles[priority]}`} key={props.id}>
+        <div className={`
+            ${styles.todoItem}
+            ${styles[item.priority]}
+            ${item.complete ? styles.complete : ''}
+          `}
+           key={item.id}
+        >
           <div className={styles.name}>
             <Button
               label="&#9776;"
@@ -47,12 +42,12 @@ const TodoItem = (props) => {
             />
             <Checkbox
               toggleCheckbox={toggleComplete}
-              checked={complete}
+              checked={item.complete}
             />
             <div className={styles.name_input_wrapper}>
               <input type="text"
-                value={name}
-                onChange={handleChangeName}
+                value={item.name}
+                onChange={handleUpdate('name')}
               />
             </div>
             <ArrowButton
@@ -65,16 +60,16 @@ const TodoItem = (props) => {
               <label>
                 Notes
               </label>
-              <textarea value={notes} onChange={handleChangeNotes} />
+              <textarea value={item.notes} onChange={handleUpdate('notes')} />
             </div>
             <div>
-              <DueDate />
+              <DueDate value={item.dueDate} onChange={handleUpdate('dueDate')} />
               <Priority
-                priority={priority}
-                onChange={changePriority}
+                priority={item.priority}
+                onChange={handleUpdate('priority')}
               />
               <div className={styles.todo_actions}>
-                <Button label="Delete" />
+                <Button label="Delete" onClick={() => remove(item)} />
               </div>
             </div>
           </div>
