@@ -11,12 +11,14 @@ const TodoItems = (props) => {
   }
 
   const onDragEnd = ({source, destination}) => {
-    const reorderedItems = reorder(items, source.index, destination.index);
+    if (destination) {
+      const reorderedItems = reorder(items, source.index, destination.index);
 
-    onReorderTodoItems({
-      listId,
-      items: reorderedItems
-    });
+      onReorderTodoItems({
+        listId,
+        items: reorderedItems
+      });
+    }
   };
 
   // The below may need to be broken into separate components.  At this 
