@@ -63,7 +63,7 @@ const TodoItem = ({item, remove, update}) => {
               <textarea value={item.notes} onChange={handleUpdate('notes')} />
             </div>
             <div>
-              <DueDate />
+              <DueDate value={item.dueDate} onChange={handleUpdate('dueDate')} />
               <Priority
                 priority={item.priority}
                 onChange={handleUpdate('priority')}
