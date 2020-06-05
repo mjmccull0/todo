@@ -9,9 +9,7 @@ import './ToDo.css';
 
 
 function ToDo() {
-  const [state, dispatch] = useTodoLists({
-    url: 'http://localhost:3000/data.json'
-  });
+  const [state, dispatch] = useTodoLists();
 
   const goToLists = () => {
     dispatch({
@@ -71,12 +69,13 @@ function ToDo() {
 
   const getActiveView = () => {
     if (state.activeList) {
+      const items = state.items.filter(item => item.listId === state.activeList.id);
       return (
         <>
           <TodoItemsMenu goBackToLists={goToLists} />
           <TodoItems
             listId={state.activeList.id}
-            items={state.activeList.items}
+            items={items}
             onCreateTodoItem={(itemName) => createTodoItem(itemName)}
             onReorderTodoItems={(items) => reorderTodoItems(items)}
             update={(item) => updateTodoItem(item)}
