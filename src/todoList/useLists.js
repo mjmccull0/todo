@@ -1,25 +1,31 @@
 import { useEffect, useReducer } from 'react';
+import { dbConfig } from 'db/dbConfig';
+import { initDB } from 'react-indexed-db';
+import { useIndexedDB } from 'react-indexed-db';
+
+initDB(dbConfig);
+
+const listStore = useIndexedDB('lists');
+const itemStore = useIndexedDB('items');
 
 const initialState = {
   loading: false,
   error: false,
   lists: [],
+  items: [],
   activeList: null,
   selectedLists: []
 }
-
 
 function todoListReducer(state, action) {
   switch (action.type) {
     case 'ADD_LIST': {
       const list = {
-        id: state.lists.length,
         name: action.listName,
         complete: false,
-        items: []
       };
-      state.lists.push(list);
-      return {...state};
+      listStore.add(list);
+      return {...state, loading: true};
     }
     case 'SET_SELECTED_LISTS': {
       let selected = state.selectedLists;
@@ -33,53 +39,34 @@ function todoListReducer(state, action) {
     }
     case 'ADD_LIST_ITEM': {
       const {listId, item} = {...action.payload};
-      const list = state.lists[listId];
       const newItem = {
-        "id": list.items.length,
         "name":"",
         "notes":"",
         "dueDate":"",
         "priority":"none",
         "complete": false,
-        "position": list.items.length,
+        "position": 0,
         "listId": listId,
         ...item
       };
-      state.lists[listId].items.push(newItem);
-      state.activeList = state.lists[listId];
-      return {...state};
+      itemStore.add(newItem);
+      return {...state, loading: true};
     }
     case 'DELETE_LIST_ITEM': {
-      const {listId} = {...action.payload};
-      const list = state.lists[listId];
-      const items = list.items.filter(item => item.id !== action.payload.id);
-      state.lists[listId].items = items;
-      state.activeList = state.lists[listId];
-      return {...state};
+      itemStore.deleteRecord(action.payload.id);
+      return {...state, loading: true}; 
     }
     case 'UPDATE_LIST_ITEM': {
-      const {listId, id} = {...action.payload};
-      const list = state.lists[listId];
-      const items = list.items.map(item => {
-        if (item.id === id) { 
-          return {...item, ...action.payload};
-        }
-        return item;
-      });
-
-      state.lists[listId].items = items;
-      state.activeList = state.lists[listId];
-
-      return {...state};
+      itemStore.update(action.payload);
+      return {...state, loading: true};
     }
     case 'REORDER_LIST_ITEMS': {
-      const { listId, items } = {...action.payload};
-      items.map((item, index) => {
+      const items = action.payload.items.map((item, index) => {
         item.position = index;
+        itemStore.update(item);
         return item;
       });
-      state.lists[listId].items = items;
-      return {...state};
+      return {...state, items, loading: true};
     }
     case 'LOADING': {
       return {
@@ -107,18 +94,18 @@ function todoListReducer(state, action) {
         return -1;
       }
 
-      action.lists.map(list => {
-        return list.items.sort(itemsByPosition);
-      });
+    action.items.sort(itemsByPosition);
+
       return {
+        ...state,
         loading: false,
         error: false,
         lists: action.lists,
-        selectedLists: []
+        items: action.items
       }
     }
     case 'SET_ACTIVE_LIST': {
-      return {...state, activeList: state.lists[action.payload]};
+      return {...state, activeList: { id: action.payload}};
     }
     case 'GO_TO_LISTS': {
       return {...state, activeList: null};
@@ -129,23 +116,22 @@ function todoListReducer(state, action) {
   }
 }
 
-const useTodoLists = ({ url }) => {
+const useTodoLists = () => {
   const [state, dispatch] = useReducer(todoListReducer, initialState);
+
   useEffect(() => {
-    const fetchLists = async () => {
-      try {
-        const response = await fetch(url);
-        const lists = await response.json();
+    const getAllUserData = async () => {
+      const lists = await listStore.getAll();
+      const items = await itemStore.getAll();
         dispatch({
           type: 'SET_LISTS',
-          lists 
+          lists,
+          items
         });
-      } catch (error) {
-        dispatch({ type: 'ERROR', error });
       }
-    };
-    fetchLists();
-  }, [url]);
+    getAllUserData();
+  }, [state.loading]);
+
   return [state, dispatch];
 }
 
