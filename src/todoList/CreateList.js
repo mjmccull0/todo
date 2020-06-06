@@ -30,7 +30,7 @@ const CreateList = ({createTodoList, props}) => {
   }
 
   return (
-    <>
+    <div>
       <Button
         className={styles.create_list}
         label="New List"
@@ -45,7 +45,7 @@ const CreateList = ({createTodoList, props}) => {
           </div>
         </div>
       }
-    </>
+    </div>
   );
 }
 
