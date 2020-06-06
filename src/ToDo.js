@@ -1,9 +1,11 @@
 import React from 'react';
 import AppView from './AppView';
 import TodoItems from 'todoListItem/TodoItems';
-import TodoItemsMenu from 'todoListItem/TodoItemsMenu';
-import ListsMenu from 'todoList/ListsMenu';
+import MenuBar from 'common/MenuBar';
+import BackButton from 'common/BackButton';
+import CreateList from 'todoList/CreateList';
 import Lists from 'todoList/Lists';
+import ListFilter from 'todoList/ListFilter';
 import { useTodoLists } from 'todoList/useLists';
 import './ToDo.css';
 
@@ -85,7 +87,9 @@ function ToDo() {
       const items = state.items.filter(item => item.listId === state.activeList.id);
       return (
         <>
-          <TodoItemsMenu goBackToLists={goToLists} />
+        <MenuBar>
+          <BackButton goBackToLists={goToLists} />
+        </MenuBar>
           <TodoItems
             listId={state.activeList.id}
             items={items}
@@ -97,9 +101,13 @@ function ToDo() {
         </>
       )
     }
+
     return (
       <>
-        <ListsMenu createTodoList={(list) => createTodoList(list)}/>
+        <MenuBar>
+          <CreateList createTodoList={(list) => createTodoList(list)} />
+          <ListFilter />
+        </MenuBar>
         <Lists
           lists={state.lists}
           onListClick={(listId) => showTodoListItems(listId)}
