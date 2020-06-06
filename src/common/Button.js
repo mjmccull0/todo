@@ -1,8 +1,9 @@
 import React from 'react';
+import styles from './Button.module.css';
 
-const Button = ({label, ...props} = {}) => {
+const Button = ({label, className, ...props} = {}) => {
   return (
-    <button {...props}>
+    <button className={`${styles.default} ${styles[className]}`} {...props}>
       {label}
     </button>
   );
