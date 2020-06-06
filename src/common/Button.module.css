@@ -15,3 +15,9 @@
 .dragIcon:hover {
   cursor: grab;
 }
+
+.action {
+  background: #40403c;
+  color: #b6b3ab;
+  box-shadow: inset 0px 1px 0px 0px #40403c;
+}
