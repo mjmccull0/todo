@@ -1,0 +1,28 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  top: 1rem;
+}
+.wrapper:before {
+    content: "";
+    position: absolute;
+    top: -1rem;
+    border-style: solid;
+    border-width: 0 1rem 1rem;
+    border-color: #e7e5e3 transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+}
+.children {
+  position: absolute;
+  background: #e7e5e3;
+  padding: 1rem;
+}
+.children label {
+  margin-bottom: 1rem;
+}
+.children input {
+  margin-bottom: 1rem;
+}
