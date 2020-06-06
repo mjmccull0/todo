@@ -38,6 +38,19 @@ function ToDo() {
     });
   }
 
+  const renameTodoList = (list) => {
+    dispatch({
+      type: 'UPDATE_LIST',
+      payload: list 
+    });
+  }
+
+  const deleteTodoLists = () => {
+    dispatch({
+      type: 'DELETE_LIST'
+    });
+  }
+
   const createTodoItem = (item) => {
     dispatch({
       type: 'ADD_LIST_ITEM',
@@ -91,6 +104,8 @@ function ToDo() {
           lists={state.lists}
           onListClick={(listId) => showTodoListItems(listId)}
           onSelectList={(listId) => selectList(listId)}
+          onRenameTodoList={renameTodoList}
+          onDeleteTodoLists={deleteTodoLists}
           selectedLists={state.selectedLists}
         />
       </>
