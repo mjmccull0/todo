@@ -37,7 +37,7 @@ const TodoItem = ({item, remove, update}) => {
           <div className={styles.name}>
             <Button
               label="&#9776;"
-              className={styles.dragIcon}
+              className="dragIcon"
               onClick={toggleDetails}
             />
             <Checkbox
@@ -69,7 +69,7 @@ const TodoItem = ({item, remove, update}) => {
                 onChange={handleUpdate('priority')}
               />
               <div className={styles.todo_actions}>
-                <Button label="Delete" onClick={() => remove(item)} />
+                <Button className="warn" label="Delete" onClick={() => remove(item)} />
               </div>
             </div>
           </div>

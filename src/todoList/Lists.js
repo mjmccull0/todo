@@ -44,7 +44,11 @@ const Lists = (props = {lists: []}) => {
             onClick={() => setRenameFormOpen(true)}
             disabled={selectedList ? false : true}
            />
-          <Button label="Delete" onClick={props.onDeleteTodoLists} />
+          <Button
+            className="warn"
+            label="Delete"
+            onClick={props.onDeleteTodoLists}
+          />
         </FooterBar>
       }
     </>
