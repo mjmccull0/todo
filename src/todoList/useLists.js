@@ -27,6 +27,16 @@ function todoListReducer(state, action) {
       listStore.add(list);
       return {...state, loading: true};
     }
+    case 'UPDATE_LIST': {
+      listStore.update(action.payload);
+      return {...state, selectedLists: [], loading: true};
+    }
+    case 'DELETE_LIST': {
+      state.selectedLists.map(listId => {
+        listStore.deleteRecord(listId);
+      });
+      return {...state, loading: true}; 
+    }
     case 'SET_SELECTED_LISTS': {
       let selected = state.selectedLists;
       if (state.selectedLists.includes(action.listId)) {
