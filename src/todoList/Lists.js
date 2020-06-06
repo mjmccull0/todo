@@ -37,14 +37,16 @@ const Lists = (props = {lists: []}) => {
           </li>
         ))}
       </ul>
-      <FooterBar>
-        <Button
-          label="Rename"
-          onClick={() => setRenameFormOpen(true)}
-          disabled={selectedList ? false : true}
-         />
-        <Button label="Delete" onClick={props.onDeleteTodoLists} />
-      </FooterBar>
+      {props.selectedLists.length > 0 &&
+        <FooterBar>
+          <Button
+            label="Rename"
+            onClick={() => setRenameFormOpen(true)}
+            disabled={selectedList ? false : true}
+           />
+          <Button label="Delete" onClick={props.onDeleteTodoLists} />
+        </FooterBar>
+      }
     </>
   );
 }
