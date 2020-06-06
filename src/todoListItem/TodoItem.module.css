@@ -51,15 +51,6 @@
   border: none;
   width: stretch;
 }
-.dragIcon {
-  background: none;
-  border: none;
-  outline: none;
-}
-.dragIcon:hover {
-  cursor: grab;
-}
-/*cursor: grabbing;*/
 
 .name input[type=text]:hover {
   outline: auto;

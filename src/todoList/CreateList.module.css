@@ -14,14 +14,6 @@
 .create_list_form input {
   width: stretch;
 }
-.actions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem;
-}
-.actions button {
-  width: stretch;
-}
 
 .create_list_form:before {
   content: "";

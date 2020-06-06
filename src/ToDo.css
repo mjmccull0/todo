@@ -8,3 +8,12 @@ html {
 input[type=text]:focus::placeholder {
   color: transparent;
 }
+
+.actions {
+  display: grid;
+  grid-gap: 1rem;
+}
+
+.actions.two {
+  grid-template-columns: 1fr 1fr;
+}
