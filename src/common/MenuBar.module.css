@@ -7,7 +7,8 @@
   grid-gap: 1rem;
   margin-bottom: 1rem;
 }
-.main_menu div {
+.main_menu > div,
+.main_menu > div > div {
   display: flex;
 }
 .main_menu button {
