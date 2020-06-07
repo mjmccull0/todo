@@ -9,6 +9,10 @@ input[type=text]:focus::placeholder {
   color: transparent;
 }
 
+li {
+  list-style: none;
+}
+
 .actions {
   display: grid;
   grid-gap: 1rem;

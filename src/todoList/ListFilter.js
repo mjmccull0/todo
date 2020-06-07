@@ -6,11 +6,8 @@ const ListFilter = (props = {}) => {
   return (
     <>
       <div className={styles.list_filter}>
-        <Button label="Lists" />
-        <Button label="Today" />
-        <Button label="Scheduled" />
+        {props.children}
       </div>
-      {props.children}
     </>
   );
 }
