@@ -1,9 +1,8 @@
 import React, { useContext, useReducer } from 'react';
 import { TodoProvider } from 'TodoContext';
-import TodoLists from 'TodoLists';
+import TodoLists from 'list/TodoLists';
 import TasksDueToday from 'task/TasksDueToday';
 import ScheduledTasks from 'task/ScheduledTasks';
-import Tasks from 'task/Tasks';
 import './ToDo.css';
 
 import ViewSelector from 'ViewSelector';
