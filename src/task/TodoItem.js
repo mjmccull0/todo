@@ -7,16 +7,32 @@ import DueDate from './DueDate';
 import styles from './TodoItem.module.css';
 import './TodoItem.css';
 
-const TodoItem = ({item, remove, update}) => {
+import { TodoContext } from 'TodoContext';
+
+const TodoItem = ({item}) => {
+  const {dispatch} = React.useContext(TodoContext);
   const nodeRef = React.useRef(null);
   const [expanded, setExpanded] = useState(false);
 
   const toggleComplete = () => {
-    update({...item, complete: !item.complete});
+    dispatch({
+      type: 'UPDATE_LIST_ITEM',
+      payload: {...item, complete: !item.complete} 
+    });
   }
 
   const handleUpdate = prop => (event) => {
-    update({...item, [prop]: event.target.value});
+    dispatch({
+      type: 'UPDATE_LIST_ITEM',
+      payload: {...item, [prop]: event.target.value}
+    });
+  }
+
+  const remove = () => {
+    dispatch({
+      type: 'DELETE_LIST_ITEM',
+      payload: item 
+    });
   }
 
   const toggleDetails = () => {
@@ -69,7 +85,7 @@ const TodoItem = ({item, remove, update}) => {
                 onChange={handleUpdate('priority')}
               />
               <div className={styles.todo_actions}>
-                <Button className="warn" label="Delete" onClick={() => remove(item)} />
+                <Button className="warn" label="Delete" onClick={remove} />
               </div>
             </div>
           </div>

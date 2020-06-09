@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import Button from 'common/Button';
 import TextInput from 'common/TextInput';
+import { TodoContext } from 'TodoContext';
 import styles from './CreateList.module.css';
 
-
-const CreateList = ({createTodoList, props}) => {
+const CreateList = (props) => {
   const [listName, setListName] = useState(null);
   const [listFormOpen, setListFormOpen] = useState(false);
+  const {dispatch} = React.useContext(TodoContext);
 
   const handleListName = (event) => {
     setListName(event.target.value);
@@ -21,8 +22,11 @@ const CreateList = ({createTodoList, props}) => {
   }
 
   const create = () => {
-    createTodoList(listName);
     closeCreateListForm();
+    dispatch({
+      type: 'ADD_LIST',
+      listName
+    });
   }
 
   const closeCreateListForm = () => {

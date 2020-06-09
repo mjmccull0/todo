@@ -28,6 +28,7 @@ const TodoItems = (props) => {
   return (
     <>
       <CreateTodoItem
+        listId={listId}
         onEnterKeyPress={(todoName) => handleEnterKeyPress(todoName)}
       />
       <DragDropContext onDragEnd={onDragEnd}>

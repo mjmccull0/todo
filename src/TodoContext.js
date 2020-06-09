@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { dbConfig } from 'db/dbConfig';
 import { initDB } from 'react-indexed-db';
 import { useIndexedDB } from 'react-indexed-db';
@@ -35,7 +35,7 @@ function todoListReducer(state, action) {
       state.selectedLists.map(listId => {
         listStore.deleteRecord(listId);
       });
-      return {...state, loading: true}; 
+      return {...state, selectedLists: [], loading: true}; 
     }
     case 'SET_SELECTED_LISTS': {
       let selected = state.selectedLists;
@@ -126,7 +126,9 @@ function todoListReducer(state, action) {
   }
 }
 
-const useTodoLists = () => {
+const TodoContext = React.createContext(initialState);
+
+function TodoProvider(props) {
   const [state, dispatch] = useReducer(todoListReducer, initialState);
 
   useEffect(() => {
@@ -142,7 +144,11 @@ const useTodoLists = () => {
     getAllUserData();
   }, [state.loading]);
 
-  return [state, dispatch];
+  return (
+    <TodoContext.Provider value={{ state, dispatch }}>
+       {props.children}
+    </TodoContext.Provider>
+  );
 }
 
-export { useTodoLists, todoListReducer }; 
+export { TodoContext, TodoProvider };

@@ -6,7 +6,6 @@ import RenameListForm from './RenameListForm';
 import styles from './Lists.module.css';
 
 const Lists = (props = {lists: []}) => {
-  const [renameFormOpen, setRenameFormOpen] = useState(false);
   let selectedList = null;
   if (props.lists.length === 0) {
     return null;
@@ -17,8 +16,7 @@ const Lists = (props = {lists: []}) => {
   }
 
   const renameTodoList = (list) => {
-    props.onRenameTodoList(list);
-    setRenameFormOpen(false);
+    props.onRename(list);
   }
 
   return (
@@ -27,30 +25,16 @@ const Lists = (props = {lists: []}) => {
         {props.lists.map(list => (
           <li key={list.id}>
             <List list={list} {...props} />
-            {renameFormOpen && selectedList && selectedList.id === list.id &&
+            {props.renameFormOpen && selectedList && selectedList.id === list.id &&
               <RenameListForm
                 list={selectedList}
-                cancel={() => {setRenameFormOpen(false)}}
+                cancel={() => {props.setRenameFormOpen(false)}}
                 rename={renameTodoList}
               />
             }
           </li>
         ))}
       </ul>
-      {props.selectedLists.length > 0 &&
-        <FooterBar>
-          <Button
-            label="Rename"
-            onClick={() => setRenameFormOpen(true)}
-            disabled={selectedList ? false : true}
-           />
-          <Button
-            className="warn"
-            label="Delete"
-            onClick={props.onDeleteTodoLists}
-          />
-        </FooterBar>
-      }
     </>
   );
 }

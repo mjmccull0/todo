@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { TodoContext } from 'TodoContext';
 import Checkbox from 'common/Checkbox';
 import styles from './List.module.css';
 
-const List = ({list, onSelectList, onListClick, ...props}) => {
-
+const List = (props) => {
+  const {list} = {...props};
+  const {state, dispatch} = useContext(TodoContext);
   return(
     <div className={styles.list}>
       <Checkbox
-        toggleCheckbox={() => onSelectList(list)}
-        checked={props.selectedLists.includes(list.id)}
+        toggleCheckbox={() => dispatch({type: 'SET_SELECTED_LISTS', listId: list.id})}
+        checked={state.selectedLists.includes(list.id)}
       />
       <div className={styles.name_wrapper}
-        onClick={() => onListClick(list.id)}
+        onClick={() => dispatch({ type: 'SET_ACTIVE_LIST', payload: list.id })}
       >
         {list.name}
       </div>

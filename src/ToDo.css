@@ -9,6 +9,11 @@ input[type=text]:focus::placeholder {
   color: transparent;
 }
 
+ol {
+  margin: 0;
+  padding: 0
+}
+
 li {
   list-style: none;
 }
