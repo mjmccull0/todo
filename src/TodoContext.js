@@ -32,11 +32,12 @@ function todoListReducer(state, action) {
       return {...state, selectedLists: [], loading: true};
     }
     case 'DELETE_LIST': {
-      state.selectedLists.map(listId => {
+      action.payload.map(listId => {
         listStore.deleteRecord(listId);
       });
-      return {...state, selectedLists: [], loading: true}; 
+      return {...state, loading: true};
     }
+    // FIXME: Possibly remove me.  Logic is being tested elsewhere.
     case 'SET_SELECTED_LISTS': {
       let selected = state.selectedLists;
       if (state.selectedLists.includes(action.listId)) {
