@@ -2,6 +2,7 @@ import React from 'react';
 import Overview from 'view/Overview';
 import ListSelectMode from 'view/ListSelectMode';
 import Tasks from 'task/Tasks';
+import TaskMenu from 'task/TaskMenu';
 import './ToDo.css';
 
 function ToDo() {
@@ -31,7 +32,12 @@ function ToDo() {
 
   const View = (props) => {
     if (listId) {
-      return <Tasks listId={listId} onBack={() => setListId(null)} />
+      return (
+        <>
+          <TaskMenu onBack={() => setListId(null)} />
+          <Tasks listId={listId} />
+        </>
+      )
     }
     return view[index];
   }
