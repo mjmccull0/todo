@@ -2,7 +2,7 @@
   border-radius: 0.3rem;
   padding: 0.3rem;
 }
-.warn {
+.warn:not([disabled]) {
   background: #cc0000;
   color: #FFFFFF;
 }
@@ -15,8 +15,16 @@
 .dragIcon:hover {
   cursor: grab;
 }
+.checkIcon:before {
+  content: "\2714";
+  font-size: x-large;
+}
 
-.action {
+.searchIcon {
+  fill: #b6b3ab;
+}
+
+.action:enable {
   background: #40403c;
   color: #b6b3ab;
   box-shadow: inset 0px 1px 0px 0px #40403c;
