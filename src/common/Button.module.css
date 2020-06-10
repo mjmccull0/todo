@@ -24,6 +24,11 @@
   fill: #b6b3ab;
 }
 
+.menu_icon:before {
+  content: "\2630";
+  font-size: x-large;
+}
+
 .action:enable {
   background: #40403c;
   color: #b6b3ab;
