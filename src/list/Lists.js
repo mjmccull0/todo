@@ -5,14 +5,14 @@ import Button from 'common/Button';
 import RenameListForm from './RenameListForm';
 import styles from './Lists.module.css';
 
-const Lists = (props = {lists: []}) => {
+const Lists = (props) => {
   let selectedList = null;
-  if (props.lists.length === 0) {
+  if (props.lists?.length === 0) {
     return null;
   }
 
-  if (props.selectedLists.length === 1) {
-    [selectedList] = props.lists.filter(list => list.id === props.selectedLists[0]);
+  if (props.selectedLists?.length === 1) {
+    [selectedList] = props?.lists.filter(list => list.id === props.selectedLists[0]);
   }
 
   const renameTodoList = (list) => {
@@ -22,9 +22,9 @@ const Lists = (props = {lists: []}) => {
   return (
     <>
       <ul className={styles.user_lists}>
-        {props.lists.map(list => (
+        {props.lists?.map(list => (
           <li key={list.id}>
-            <List list={list} {...props} />
+            <List list={list} {...props}  />
             {props.renameFormOpen && selectedList && selectedList.id === list.id &&
               <RenameListForm
                 list={selectedList}
