@@ -1,15 +1,13 @@
 import React from 'react';
 import OverviewViewSelector from 'OverviewViewSelector';
 import MenuBar from 'common/MenuBar';
-import Button from 'common/Button';
+import MenuButton from 'common/MenuButton';
 
 const TaskOverviewMenu = (props) => {
   return (
     <MenuBar
       right={
-        <>
-          <Button className="menu_icon" />
-        </>
+        <MenuButton click={props.onMenuClick} />
       }
       center={
         <OverviewViewSelector click={props.onSelectView} />
