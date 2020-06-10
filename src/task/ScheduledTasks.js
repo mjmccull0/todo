@@ -1,11 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import TodoItem from './TodoItem';
-import { TodoContext } from 'TodoContext';
 
-
-const ScheduledTasks = (props) => {
-  const {state, dispatch} = useContext(TodoContext);
-  const scheduledTasks = state.items.filter(item => item.dueDate !== '');
+const ScheduledTasks = ({items}) => {
+  const scheduledTasks = items.filter(item => item.dueDate !== '');
   return (
     <ol>
       {scheduledTasks.map(item => (

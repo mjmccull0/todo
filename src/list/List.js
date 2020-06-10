@@ -1,11 +1,9 @@
-import React, { useContext } from 'react';
-import { TodoContext } from 'TodoContext';
+import React from 'react';
 import Checkbox from 'common/Checkbox';
 import styles from './List.module.css';
 
 const List = (props) => {
   const {list} = {...props};
-  const {state, dispatch} = useContext(TodoContext);
   return(
     <div className={styles.list}>
       <Checkbox

@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import List from './List';
-import FooterBar from 'common/FooterBar';
-import Button from 'common/Button';
 import RenameListForm from './RenameListForm';
 import styles from './Lists.module.css';
 
