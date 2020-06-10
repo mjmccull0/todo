@@ -1,7 +1,5 @@
 import React, { useContext } from 'react';
-import MenuBar from 'common/MenuBar';
 import TodoItems from './TodoItems';
-import BackButton from 'common/BackButton';
 import { TodoContext } from 'TodoContext';
 
 const Tasks = (props) => {
@@ -9,12 +7,6 @@ const Tasks = (props) => {
 
   return (
     <>
-      <MenuBar
-        left={
-          <BackButton onClick={props.onBack} />
-        }
-      >
-      </MenuBar>
       <TodoItems
           listId={props.listId}
           items={state.items.filter(item => item.listId === props.listId)}
