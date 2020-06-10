@@ -3,6 +3,7 @@ import { TodoContext } from 'TodoContext';
 import Lists from 'list/Lists';
 import SearchButton from 'common/SearchButton';
 import MenuBar from 'common/MenuBar';
+import Header from 'common/Header';
 import FooterBar from 'common/FooterBar';
 import Button from 'common/Button';
 
@@ -60,7 +61,7 @@ const ListSelectModeMenuBar = (props) => {
   return (
     <MenuBar
       center={
-        <span>Click a task list to select</span>
+        <Header>Click a task list to select</Header>
       }
       right={
         <>
