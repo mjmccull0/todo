@@ -1,4 +1,7 @@
 .main_menu {
+  position: sticky;
+  z-index: 1;
+  top: 0;
   min-height: 2rem;
   background: #40403c;
   flex-grow: 1;
