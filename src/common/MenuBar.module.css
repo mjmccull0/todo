@@ -2,13 +2,12 @@
   position: sticky;
   z-index: 1;
   top: 0;
-  min-height: 2rem;
+  height: 3rem;
   background: #40403c;
-  flex-grow: 1;
+  flex-grow: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 1rem;
-  margin-bottom: 1rem;
 }
 .main_menu > div,
 .main_menu > div > div {
