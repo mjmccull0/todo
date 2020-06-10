@@ -7,10 +7,10 @@ import './ToDo.css';
 
 function ToDo() {
   const [index, setIndex] = React.useState(0);
-  const [listId, setListId] = React.useState(null);
+  const [list, setList] = React.useState(null);
 
-  const select = (listId) => {
-    setListId(listId);
+  const select = (list) => {
+    setList(list);
   }
 
   const toggleListSelect = () => {
@@ -31,11 +31,11 @@ function ToDo() {
 
 
   const View = (props) => {
-    if (listId) {
+    if (list) {
       return (
         <>
-          <TaskMenu onBack={() => setListId(null)} />
-          <Tasks listId={listId} />
+          <TaskMenu title={list.name} onBack={() => setList(null)} />
+          <Tasks listId={list.id} />
         </>
       )
     }

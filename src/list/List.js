@@ -11,7 +11,7 @@ const List = (props) => {
         checked={props.selectedLists?.includes(list.id)}
       />
       <div className={styles.name_wrapper}
-        onClick={() => props.onListClick(list.id)}
+        onClick={() => props.onListClick(list)}
       >
         {list.name}
       </div>
