@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import Button from 'common/Button';
 import Checkbox from 'common/Checkbox';
 import ArrowButton from 'common/ArrowButton';
@@ -10,8 +10,8 @@ import './TodoItem.css';
 import { TodoContext } from 'TodoContext';
 
 const TodoItem = ({item}) => {
-  const {dispatch} = React.useContext(TodoContext);
-  const nodeRef = React.useRef(null);
+  const {dispatch} = useContext(TodoContext);
+  const nodeRef = useRef(null);
   const [expanded, setExpanded] = useState(false);
 
   const toggleComplete = () => {

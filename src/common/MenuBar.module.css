@@ -1,5 +1,5 @@
 .main_menu {
-  height: 2rem;
+  min-height: 2rem;
   background: #40403c;
   flex-grow: 1;
   display: grid;
@@ -28,4 +28,7 @@
 }
 .center {
   justify-content: center;
+}
+.right {
+  justify-content: flex-end;
 }

@@ -6,13 +6,13 @@ const MenuBar = (props = {}) => {
   return (
     <>
       <div className={styles.main_menu}>
-        <div>
+        <div className={styles.left}>
           {props.left}
         </div>
         <div className={styles.center}>
           {props.center}
         </div>
-        <div>
+        <div className={styles.right}>
           {props.right}
         </div>
       </div>
