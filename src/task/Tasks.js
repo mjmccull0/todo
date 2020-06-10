@@ -11,7 +11,7 @@ const Tasks = (props) => {
     <>
       <MenuBar
         left={
-          <BackButton onClick={() => dispatch({ type: 'GO_TO_LISTS' })} />
+          <BackButton onClick={props.onBack} />
         }
       >
       </MenuBar>
