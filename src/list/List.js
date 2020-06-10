@@ -9,11 +9,11 @@ const List = (props) => {
   return(
     <div className={styles.list}>
       <Checkbox
-        toggleCheckbox={() => dispatch({type: 'SET_SELECTED_LISTS', listId: list.id})}
-        checked={state.selectedLists.includes(list.id)}
+        toggleCheckbox={() => props.onSelect(list.id)}
+        checked={props.selectedLists?.includes(list.id)}
       />
       <div className={styles.name_wrapper}
-        onClick={() => dispatch({ type: 'SET_ACTIVE_LIST', payload: list.id })}
+        onClick={() => props.onListClick(list.id)}
       >
         {list.name}
       </div>
