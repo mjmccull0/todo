@@ -32,21 +32,8 @@ function todoListReducer(state, action) {
       return {...state, selectedLists: [], loading: true};
     }
     case 'DELETE_LIST': {
-      action.payload.map(listId => {
-        listStore.deleteRecord(listId);
-      });
+      action.payload.forEach(listId => listStore.deleteRecord(listId));
       return {...state, loading: true};
-    }
-    // FIXME: Possibly remove me.  Logic is being tested elsewhere.
-    case 'SET_SELECTED_LISTS': {
-      let selected = state.selectedLists;
-      if (state.selectedLists.includes(action.listId)) {
-        selected = state.selectedLists.filter(id => id !== action.listId);
-      } else {
-        selected = [...selected, action.listId];
-      }
-
-      return {...state, selectedLists: [...selected]};
     }
     case 'ADD_LIST_ITEM': {
       const {listId, item} = {...action.payload};
