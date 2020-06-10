@@ -4,35 +4,44 @@
   display: inline-block;
   padding: 3px;
 }
-
-.right {
+i.right {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
 }
 
-.left {
+i.left {
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
 }
 
-.up {
+i.up {
   transform: rotate(-135deg);
   -webkit-transform: rotate(-135deg);
 }
 
-.down {
+i.down {
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
 }
 
 .wrapper {
-  height: 2rem;
   width: 2rem;
   background: none;
+}
+.wrapper.up,
+.wrapper.down {
   border: none;
+  background: none;
+  background: transparent;
+}
+.wrapper.up:focus,
+.wrapper.down:focus {
   outline: none;
 }
-
+.wrapper.up:hover,
+.wrapper.down:hover {
+  outline: auto;
+}
 .wrapper:hover {
   outline: auto;
 }
