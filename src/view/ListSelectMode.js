@@ -12,12 +12,12 @@ const ListSelectMode = (props) => {
   const [renameFormOpen, setRenameFormOpen] = useState(false);
   const [selectedLists, setSelectedLists] = useState([]);
 
-  const select = (listId) => {
+  const select = (list) => {
     let selected = selectedLists;
-    if (selectedLists.includes(listId)) {
-      selected = selectedLists.filter(id => id !== listId);
+    if (selectedLists.includes(list.id)) {
+      selected = selectedLists.filter(id => id !== list.id);
     } else {
-      selected = [...selected, listId];
+      selected = [...selected, list.id];
     }
     setSelectedLists(selected);
   }
