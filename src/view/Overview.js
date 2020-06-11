@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { TodoContext } from 'TodoContext';
 import TaskOverviewMenu from 'task/TaskOverviewMenu';
 import ListOverviewMenu from 'list/ListOverviewMenu';
-import Lists from 'list/Lists';
+import { Lists } from 'list/Lists';
 import TasksDueToday from 'task/TasksDueToday';
 import ScheduledTasks from 'task/ScheduledTasks';
 

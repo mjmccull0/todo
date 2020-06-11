@@ -1,9 +1,9 @@
 import React from 'react';
-import List from './List';
+import { ListView, ListSelect } from './List';
 import RenameListForm from './RenameListForm';
 import styles from './Lists.module.css';
 
-const Lists = (props) => {
+const SelectLists = (props) => {
   let selectedList = props.selectedList;
   if (props.lists?.length === 0) {
     return null;
@@ -22,7 +22,7 @@ const Lists = (props) => {
       <ul className={styles.user_lists}>
         {props.lists?.map(list => (
           <li key={list.id}>
-            <List list={list} {...props}  />
+            <ListSelect list={list} {...props}  />
             {props.renameFormOpen && selectedList && selectedList.id === list.id &&
               <RenameListForm
                 list={selectedList}
@@ -37,4 +37,18 @@ const Lists = (props) => {
   );
 }
 
-export default Lists;
+const Lists = (props) => {
+  return (
+    <>
+      <ul className={styles.user_lists}>
+        {props.lists?.map(list => (
+          <li key={list.id}>
+            <ListView list={list} {...props}  />
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+}
+
+export { Lists, SelectLists };

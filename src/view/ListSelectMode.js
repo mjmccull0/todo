@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { TodoContext } from 'TodoContext';
-import Lists from 'list/Lists';
+import { SelectLists } from 'list/Lists';
 import SearchButton from 'common/SearchButton';
 import MenuBar from 'common/MenuBar';
 import Header from 'common/Header';
@@ -40,7 +40,7 @@ const ListSelectMode = (props) => {
   return (
     <>
       <ListSelectModeMenuBar {...props} />
-      <Lists
+      <SelectLists
         lists={state.lists}
         selectedLists={selectedLists}
         onSelect={(event) => select(event)}
