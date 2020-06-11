@@ -8,6 +8,7 @@
   flex-direction: column;
 }
 .user_lists li {
+  padding: 0 1rem;
   border-bottom: 1px solid #f2f1f0;
 }
 .user_lists li:last-child {

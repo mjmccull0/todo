@@ -48,3 +48,7 @@ li {
 .actions.two {
   grid-template-columns: 1fr 1fr;
 }
+
+input[type='checkbox'] {
+  margin-right: 0.5rem;
+}

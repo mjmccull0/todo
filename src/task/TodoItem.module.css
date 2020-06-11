@@ -33,9 +33,6 @@
 .name {
   display: flex;
 }
-.name_input_wrapper {
-  padding: 0 0.75rem;
-}
 
 .name > div {
   flex-grow: 1;
