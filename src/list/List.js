@@ -7,7 +7,7 @@ const List = (props) => {
   return(
     <div className={styles.list}>
       <Checkbox
-        toggleCheckbox={() => props.onSelect(list.id)}
+        toggleCheckbox={() => props.onSelect(list)}
         checked={props.selectedLists?.includes(list.id)}
       />
       <div className={styles.name_wrapper}
