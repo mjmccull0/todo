@@ -7,35 +7,43 @@ import './ToDo.css';
 
 function ToDo() {
   const [index, setIndex] = React.useState(0);
-  const [list, setList] = React.useState(null);
+  const [openList, setOpenList] = React.useState(null);
+  const [selectedList, setSelectedList] = React.useState([]);
 
-  const select = (list) => {
-    setList(list);
+  const showListTasks = (list) => {
+    setOpenList(list);
   }
 
-  const toggleListSelect = () => {
-    if (index === 1) {
-      setIndex(0);
-    } else {
-      setIndex(1);
-    }
+  const enterListSelectMode = (list) => {
+    setSelectedList([list.id]);
+    setIndex(1);
+  }
+
+  const exitListSelectMode = (list) => {
+    setIndex(0);
   }
 
   const view = [
     <Overview
-      onListClick={(event) => select(event)}
-      toggleListSelect={toggleListSelect}
+      onListClick={(event) => showListTasks(event)}
+      enterListSelectMode={enterListSelectMode}
     />,
-    <ListSelectMode toggleListSelect={toggleListSelect} />
+    <ListSelectMode
+      selectedList={selectedList}
+      exitListSelectMode={exitListSelectMode}
+    />
   ];
 
 
   const View = (props) => {
-    if (list) {
+    if (openList) {
       return (
         <>
-          <TaskMenu title={list.name} onBack={() => setList(null)} />
-          <Tasks listId={list.id} />
+          <TaskMenu
+            title={openList.name}
+            onBack={() => setOpenList(null)}
+          />
+          <Tasks listId={openList.id} />
         </>
       )
     }

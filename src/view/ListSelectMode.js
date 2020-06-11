@@ -10,7 +10,7 @@ import Button from 'common/Button';
 const ListSelectMode = (props) => {
   const {state, dispatch} = useContext(TodoContext);
   const [renameFormOpen, setRenameFormOpen] = useState(false);
-  const [selectedLists, setSelectedLists] = useState([]);
+  const [selectedLists, setSelectedLists] = useState([...props.selectedList]);
 
   const select = (list) => {
     let selected = selectedLists;
@@ -67,12 +67,12 @@ const ListSelectModeMenuBar = (props) => {
         <>
           <Button
             className="checkIcon"
-            onClick={props.toggleListSelect}
+            onClick={props.exitListSelectMode}
           />
           <SearchButton />
           <Button
             label="Cancel"
-            onClick={props.toggleListSelect}
+            onClick={props.exitListSelectMode}
           />
         </>
       }

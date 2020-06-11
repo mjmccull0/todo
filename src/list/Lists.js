@@ -4,7 +4,7 @@ import RenameListForm from './RenameListForm';
 import styles from './Lists.module.css';
 
 const Lists = (props) => {
-  let selectedList = null;
+  let selectedList = props.selectedList;
   if (props.lists?.length === 0) {
     return null;
   }

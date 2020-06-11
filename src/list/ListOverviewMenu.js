@@ -15,7 +15,7 @@ const ListOverviewMenu = (props) => (
     }
     right={
       <>
-        <Button onClick={props.toggleListSelect} className="checkIcon" />
+        <Button onClick={props.enterListSelectMode} className="checkIcon" />
         <SearchButton />
       </>
     }

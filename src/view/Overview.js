@@ -19,6 +19,7 @@ const Overview = (props) => {
       <Lists
         lists={state.lists}
         onListClick={props.onListClick}
+        onSelect={props.enterListSelectMode}
       />
     </>,
     <>
