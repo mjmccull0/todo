@@ -4,8 +4,46 @@
   align-items: center;
 }
 .name_wrapper {
+  padding-left: 1rem;
   width: stretch;
   height: stretch;
   display: flex;
   align-items: center;
+}
+.action {
+  display: flex;
+  height: inherit;
+  align-items: center;
+  height: 1.75rem;
+  width: 1.75rem;
+  position: relative;
+}
+.reveal {
+  display: flex;
+  height: inherit;
+  align-items: center;
+  height: 1.75rem;
+  width: 1.75rem;
+  position: relative;
+}
+.control {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+.color_code {
+  height: inherit;
+  width: 1rem;
+  background-color: #bbb;
+  border-radius: 50%;
+  position: relative;
+  left: 0;
+  width: inherit;
+}
+.reveal:hover .color_code {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.25s, opacity 0.25s;
 }
