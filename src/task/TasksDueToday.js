@@ -8,7 +8,7 @@ const TasksDueToday = ({items}) => {
     <ol>
       {dueToday.map(item => (
         <li key={item.id}>
-          <TodoItem item={item} />
+          <TodoItem item={item} listName={true} />
         </li>
       ))}
     </ol>
