@@ -87,13 +87,13 @@ const ListSelectModeFooter = (props) => {
         <Button
           label="Rename"
           onClick={() => props.setRenameFormOpen(true)}
-          disabled={props.selectedLists > 1 ? false : true}
+          disabled={props.selectedLists.length == 1 ? false : true}
          />
         <Button
           className="warn"
           label="Delete"
           onClick={props.onDelete}
-          disabled={props.selectedLists < 1 ? true : false}
+          disabled={props.selectedLists.length > 0 ? false : true}
         />
       </FooterBar>
     </>

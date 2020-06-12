@@ -15,11 +15,14 @@ function ToDo() {
   }
 
   const enterListSelectMode = (list) => {
-    setSelectedList([list.id]);
+    if (list.id) {
+      setSelectedList([list.id]);
+    }
     setIndex(1);
   }
 
   const exitListSelectMode = (list) => {
+    setSelectedList([]);
     setIndex(0);
   }
 
