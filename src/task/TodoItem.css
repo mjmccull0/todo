@@ -9,12 +9,6 @@ label {
   width: auto;
 }
 
-.close {
-  height: 64px;
-  overflow: hidden;
-  margin-bottom: 1rem;
-}
-
 .open {
   height: auto;
   margin-bottom: 1rem;
