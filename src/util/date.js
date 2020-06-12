@@ -32,4 +32,8 @@ const tomorrow = () => {
   return dateInputFormat(date);
 }
 
-export {today, tomorrow};
+const daysBetween = (date1, date2) => {
+  const time_difference = date2.getTime() - date1.getTime();
+  return Math.abs(Math.floor(time_difference/(1000 * 3600 * 24)));
+}
+export {today, tomorrow, daysBetween};
