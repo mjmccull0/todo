@@ -1,7 +1,6 @@
 .todoItem {
   display: flex;
   flex-direction: column;
-  height: 300px;
   max-width: 700px;
   margin: 0  auto 1rem;
   padding: 1rem;
@@ -32,6 +31,7 @@
 
 .name {
   display: flex;
+  flex-grow: 1;
 }
 
 .name > div {
@@ -58,8 +58,8 @@
 }
 
 .notes {
-  display: flex;
-  flex-direction: column;
+  grid-column: 1;
+  grid-row: 1/8;
 }
 
 .notes label {
@@ -91,10 +91,20 @@
 .todo_actions {
   position: relative;
   height: 100%;
+  grid-row: 7;
 }
 .todo_actions button {
   position: absolute;
   right: 0;
   bottom: 0;
 }
-
+.due,
+.list_name {
+  display: flex;
+  align-self: center;
+  margin: 0 1rem;
+}
+.draggable:before {
+  content: '\2630';
+  align-self: center;
+}
