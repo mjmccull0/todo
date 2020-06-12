@@ -5,7 +5,7 @@ import TodoItem from './TodoItem';
 import reorder from 'util/reorder';
 
 const TodoItems = (props) => {
-  const {listId, items, onCreateTodoItem, onReorderTodoItems, remove, update} = {...props};
+  const {listId, items, onCreateTodoItem, onReorderTodoItems} = {...props};
   const handleEnterKeyPress = (itemName) => {
     onCreateTodoItem({listId, item: {name: itemName}});
   }
@@ -54,8 +54,8 @@ const TodoItems = (props) => {
                          <TodoItem
                           key={item.id}
                           item={item}
-                          update={(item) => update(item)}
-                          remove={(item) => remove(item)}
+                          dueDate={true}
+                          draggable={true}
                          />
                       </div>
                      )}
