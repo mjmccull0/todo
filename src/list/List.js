@@ -4,7 +4,7 @@ import styles from './List.module.css';
 
 const ListView = (props) => (
   <ListContainer {...props}>
-    <Reveal>
+    <Reveal color={props.list.color}>
       <ListCheckbox {...props} />
     </Reveal>
     <ListName {...props} />
@@ -44,7 +44,10 @@ const Reveal = (props) => (
   <>
     <div className={styles.reveal}>
       <div className={styles.control}>{props.children}</div>
-      <div className={styles.color_code}>
+      <div
+        className={styles.color_code}
+        style={{background: `rgba(${props.color.r}, ${props.color.g}, ${props.color.b}`}}
+       >
       </div>
     </div>
   </>

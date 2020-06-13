@@ -1,6 +1,5 @@
 .default {
   border-radius: 0.3rem;
-  padding: 0.3rem;
 }
 .warn:not([disabled]) {
   background: #cc0000;

@@ -2,7 +2,6 @@
   position: sticky;
   z-index: 1;
   top: 0;
-  height: 3rem;
   background: #40403c;
   flex-grow: 0;
   display: grid;

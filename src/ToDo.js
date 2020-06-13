@@ -1,7 +1,7 @@
 import React from 'react';
 import Overview from 'view/Overview';
 import ListSelectMode from 'view/ListSelectMode';
-import Tasks from 'task/Tasks';
+import Tasks from 'view/Tasks';
 import TaskMenu from 'task/TaskMenu';
 import './ToDo.css';
 
@@ -43,10 +43,11 @@ function ToDo() {
       return (
         <>
           <TaskMenu
-            title={openList.name}
+            list={openList}
             onBack={() => setOpenList(null)}
+            onColorChange={(list) => setOpenList(list)}
           />
-          <Tasks listId={openList.id} />
+          <Tasks list={openList} />
         </>
       )
     }
