@@ -1,7 +1,6 @@
 import React, { useContext, useRef, useState } from 'react';
 import Button from 'common/Button';
 import Checkbox from 'common/Checkbox';
-import ArrowButton from 'common/ArrowButton';
 import Priority from './Priority';
 import DueDate from './DueDate';
 import styles from './TodoItem.module.css';
