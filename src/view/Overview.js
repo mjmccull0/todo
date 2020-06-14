@@ -11,12 +11,14 @@ import Search from 'list/Search';
 const Overview = (props) => {
   const {state} = useContext(TodoContext);
   const [viewIndex, setViewIndex] = useState(0);
-  const [searchMode, setSearchMode] = React.useState(false);
+  const [searchMode, setSearchMode] = useState(false);
+  const [query, setQuery] = useState('');
+
   const change = (event) => {
     setViewIndex(event.target.value);
   }
 
-  const closeSearch = (x) => {
+  const closeSearch = () => {
     setSearchMode(false);
   }
 
@@ -28,10 +30,15 @@ const Overview = (props) => {
         {...props}
       />
       {searchMode &&
-        <Search onCloseSearch={closeSearch} />
+        <Search
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          onCloseSearch={closeSearch}
+        />
       }
       <Lists
         lists={state.lists}
+        query={query}
         onListClick={props.onListClick}
         onSelect={props.enterListSelectMode}
       />

@@ -4,15 +4,17 @@ import TextInput from 'common/TextInput';
 import Button from 'common/Button';
 import styles from './Search.module.css';
 
-const Search = (props) => {
-  return (
-    <>
-      <SearchContainer>
-        <SearchBox onCloseSearch={props.onCloseSearch} />
-      </SearchContainer>
-    </>
-  );
-}
+const Search = (props) => (
+  <>
+    <SearchContainer>
+      <SearchBox
+        value={props.value}
+        onChange={props.onChange}
+        onCloseSearch={props.onCloseSearch}
+      />
+    </SearchContainer>
+  </>
+)
 
 const SearchContainer = (props) => (
   <div className={styles.wrapper}>
@@ -25,7 +27,12 @@ const SearchContainer = (props) => (
 const SearchBox = (props) => (
   <>
     <SearchIcon />
-    <TextInput className={styles.search_box} />
+    <TextInput
+      value={props.value}
+      onChange={props.onChange}
+      className={styles.search_box}
+      autoFocus
+    />
     <Close onClick={props.onCloseSearch} />
   </>
 )

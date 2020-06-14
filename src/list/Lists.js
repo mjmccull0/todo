@@ -38,10 +38,13 @@ const SelectLists = (props) => {
 }
 
 const Lists = (props) => {
+  const lists = props.lists.filter(list => {
+    return (list.name.toLowerCase()).includes(props.query.toLowerCase());
+  });
   return (
     <>
       <ul className={styles.user_lists}>
-        {props.lists?.map(list => (
+        {lists?.map(list => (
           <li key={list.id}>
             <ListView list={list} {...props}  />
           </li>
