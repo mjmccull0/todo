@@ -6,16 +6,30 @@ import { Lists } from 'list/Lists';
 import TasksDueToday from 'task/TasksDueToday';
 import ScheduledTasks from 'task/ScheduledTasks';
 
+import Search from 'list/Search';
+
 const Overview = (props) => {
   const {state} = useContext(TodoContext);
   const [viewIndex, setViewIndex] = useState(0);
+  const [searchMode, setSearchMode] = React.useState(false);
   const change = (event) => {
     setViewIndex(event.target.value);
   }
 
+  const closeSearch = (x) => {
+    setSearchMode(false);
+  }
+
   const view = [
     <>
-      <ListOverviewMenu {...props} onSelectView={change} />
+      <ListOverviewMenu
+        onSelectView={change}
+        onSearch={() => setSearchMode(!searchMode)}
+        {...props}
+      />
+      {searchMode &&
+        <Search onCloseSearch={closeSearch} />
+      }
       <Lists
         lists={state.lists}
         onListClick={props.onListClick}
