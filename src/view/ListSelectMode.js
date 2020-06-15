@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { TodoContext } from 'TodoContext';
-import { SelectLists } from 'list/Lists';
+import { SelectLists, Grid } from 'list/Lists';
 import SearchButton from 'common/SearchButton';
 import MenuBar from 'common/MenuBar';
 import Header from 'common/Header';
@@ -8,6 +8,7 @@ import FooterBar from 'common/FooterBar';
 import Button from 'common/Button';
 
 const ListSelectMode = (props) => {
+  console.log(props);
   const {state, dispatch} = useContext(TodoContext);
   const [renameFormOpen, setRenameFormOpen] = useState(false);
   const [selectedLists, setSelectedLists] = useState([...props.selectedList]);
@@ -40,18 +41,43 @@ const ListSelectMode = (props) => {
   return (
     <>
       <ListSelectModeMenuBar {...props} />
-      <SelectLists
-        lists={state.lists}
-        selectedLists={selectedLists}
-        onSelect={(event) => select(event)}
-        onRename={update}
-        renameFormOpen={renameFormOpen}
-        onListClick={(event) => select(event)}
-      />
+      {props.grid
+        ? <Grid
+            lists={state.lists}
+            selectedLists={selectedLists}
+            onSelect={(event) => select(event)}
+            update={update}
+            renameFormOpen={renameFormOpen}
+            onListClick={(event) => select(event)}
+          />
+        : <List
+            lists={state.lists}
+            selectedLists={selectedLists}
+            onSelect={(event) => select(event)}
+            update={update}
+            renameFormOpen={renameFormOpen}
+            onListClick={(event) => select(event)}
+          />
+      }
       <ListSelectModeFooter
         selectedLists={selectedLists}
         setRenameFormOpen={(value) => setRenameFormOpen(value)}
         onDelete={remove}
+      />
+    </>
+  );
+}
+
+const List = (props) => {
+  return (
+    <>
+      <SelectLists
+        lists={props.lists}
+        selectedLists={props.selectedLists}
+        onSelect={(event) => props.onSelect(event)}
+        onRename={props.update}
+        renameFormOpen={props.renameFormOpen}
+        onListClick={(event) => props.onListClick(event)}
       />
     </>
   );

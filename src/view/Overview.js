@@ -1,46 +1,29 @@
 import React, { useContext, useState } from 'react';
 import { TodoContext } from 'TodoContext';
 import TaskOverviewMenu from 'task/TaskOverviewMenu';
-import ListOverviewMenu from 'list/ListOverviewMenu';
-import { Lists } from 'list/Lists';
 import TasksDueToday from 'task/TasksDueToday';
 import ScheduledTasks from 'task/ScheduledTasks';
 
-import Search from 'list/Search';
+
+import ListView from 'view/ListView';
 
 const Overview = (props) => {
   const {state} = useContext(TodoContext);
   const [viewIndex, setViewIndex] = useState(0);
-  const [searchMode, setSearchMode] = useState(false);
-  const [query, setQuery] = useState('');
 
   const change = (event) => {
     setViewIndex(event.target.value);
   }
 
-  const closeSearch = () => {
-    setSearchMode(false);
-  }
-
   const view = [
     <>
-      <ListOverviewMenu
-        onSelectView={change}
-        onSearch={() => setSearchMode(!searchMode)}
-        {...props}
-      />
-      {searchMode &&
-        <Search
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          onCloseSearch={closeSearch}
-        />
-      }
-      <Lists
+      <ListView
         lists={state.lists}
-        query={query}
+        change={change}
         onListClick={props.onListClick}
-        onSelect={props.enterListSelectMode}
+        enterListSelectMode={props.enterListSelectMode}
+        setGrid={props.setGrid}
+        grid={props.grid}
       />
     </>,
     <>

@@ -9,10 +9,17 @@ function ToDo() {
   const [index, setIndex] = React.useState(0);
   const [openList, setOpenList] = React.useState(null);
   const [selectedList, setSelectedList] = React.useState([]);
+  const [grid, setGrid] = React.useState(false);
+  const [query, setQuery] = React.useState('');
 
   const showListTasks = (list) => {
     setOpenList(list);
   }
+
+  const gridMode = (value) => {
+    setGrid(value);
+  }
+
 
   const enterListSelectMode = (list) => {
     if (list.id) {
@@ -26,14 +33,24 @@ function ToDo() {
     setIndex(0);
   }
 
+  const handleQuery = (props) => {
+    console.log('handleQuery');
+    console.log(props);
+  }
+
   const view = [
     <Overview
       onListClick={(event) => showListTasks(event)}
       enterListSelectMode={enterListSelectMode}
+      setGrid={gridMode}
+      grid={grid}
     />,
     <ListSelectMode
       selectedList={selectedList}
       exitListSelectMode={exitListSelectMode}
+      grid={grid}
+      query={query}
+      setQuery={handleQuery}
     />
   ];
 

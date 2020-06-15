@@ -46,3 +46,8 @@
   opacity: 0;
   transition: visibility 0s 0.25s, opacity 0.25s;
 }
+.grid_container {
+  display: grid;
+}
+.grid_item {
+}

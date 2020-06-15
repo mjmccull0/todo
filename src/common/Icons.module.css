@@ -3,5 +3,12 @@
 }
 .icon {
   height: stretch;
-  position: absolute;
+  position: relative;
+  min-width: 1rem;
+}
+.icon path {
+  fill: #b6b3ab;
+}
+.icon svg {
+  min-width: 1rem;
 }

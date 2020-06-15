@@ -54,4 +54,42 @@ const Lists = (props) => {
   );
 }
 
-export { Lists, SelectLists };
+const Grid = (props) => {
+  return (
+    <>
+      <div className={styles.grid}>
+        {props.lists.map(list => (
+          <GridItem
+            key={list.id}
+            list={list}
+            onListClick={props.onListClick}
+            onSelect={props.enterListSelectMode}
+            selectedLists={props.selectedLists}
+          />
+        ))}
+      </div>
+    </>
+  );
+}
+
+const GridItem = (props) => {
+  return (
+    <div className={styles.grid_item}
+      onClick={() => props.onListClick(props.list)}
+    >
+      <div
+        className={`
+          ${styles.color_code}
+          ${props.selectedLists.includes(props.list.id) ? styles.selected : ''}
+        `}
+        style={{background: `rgba(${props.list.color.r}, ${props.list.color.g}, ${props.list.color.b}`}}
+      >
+      </div>
+      <div className={styles.list_name}>
+        {props.list.name}
+      </div>
+    </div>
+  );
+}
+
+export { Grid, Lists, SelectLists };
