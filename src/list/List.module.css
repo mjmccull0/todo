@@ -2,11 +2,12 @@
   height: 3rem;
   display: flex;
   align-items: center;
+  width: 100%;
 }
-.name_wrapper {
+.list .name_wrapper {
   padding-left: 1rem;
-  width: stretch;
-  height: stretch;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
 }
@@ -33,7 +34,7 @@
   left: 0;
   right: 0;
 }
-.color_code {
+.list .color_code {
   height: inherit;
   width: 1rem;
   border-radius: 50%;
@@ -49,5 +50,58 @@
 .grid_container {
   display: grid;
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-column-gap: 4rem;
+  grid-row-gap: 4rem;
+  padding: 1rem 5rem;
+  background: #f2f1f0;
+  height: stretch;
+  height: 100%;
+}
 .grid_item {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+}
+
+.grid_item .color_code {
+  position: relative;
+  flex-grow: 1;
+  box-shadow:
+    inset 0 -3em 3em rgba(0,0,0,0.1),
+    0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
+.grid_item .name_wrapper {
+  align-self: center;
+  margin-top: 1rem; 
+}
+
+.grid_item .selected:after {
+    content: "\2714";
+    font-size: x-large;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.grid name_wrapper {
+  display: flex;
+}
+.list_view {
+  display: flex;
+  flex-direction: column;
+  height: stretch;
+  background: #FFFFFF;
+  height: 100%;
+}
+.list_view > .list {
+  padding: 0 1rem;
+}
+.list ~ .list {
+  border-top: 1px solid rgba(190, 206, 221, 0.5);
+}
+.list_view > .list:hover {
+  background: rgba(190, 206, 221, 0.2);
 }
