@@ -2,8 +2,8 @@
   position: relative;
 }
 .color {
-  width: 36px;
-  height: stretch;
+  width: 2.4rem;
+  height: 100%;
   border-radius: 2px;
   max-height: 100%;
 }
