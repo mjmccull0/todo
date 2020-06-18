@@ -23,6 +23,11 @@ function todoListReducer(state, action) {
       const list = {
         name: action.listName,
         complete: false,
+        color: {
+          r: 190,
+          g: 206,
+          b:221 
+        }
       };
       listStore.add(list);
       return {...state, loading: true};
