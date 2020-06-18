@@ -1,11 +1,17 @@
+.todoItem,
+.container  header {
+  max-width: 700px;
+  margin: auto;
+}
+
 .todoItem {
   display: flex;
   flex-direction: column;
-  max-width: 700px;
   margin: 0  auto 1rem;
   padding: 1rem;
   background: #FFFFFF;
   border-left: 0.4rem solid;
+  box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
 }
 
 .complete .name input[type=text] {
