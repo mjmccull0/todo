@@ -1,11 +1,19 @@
 import React from 'react';
 import styles from './Button.module.css';
 
-const Button = ({label, className, ...props} = {}) => {
+const Button = (props) => {
+  const {active, label, className, children, ...other} = {...props};
   return (
-    <button className={`${styles.default} ${styles[className]}`} {...props}>
+    <button
+      className={`
+        ${styles.default}
+        ${className ? styles[className] : ''}
+        ${active ? styles.active : '' }
+      `}
+      {...other}
+    >
       {label}
-      {props.children}
+      {children}
     </button>
   );
 }
