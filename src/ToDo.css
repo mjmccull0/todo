@@ -51,3 +51,7 @@ li {
 
 input[type='checkbox'] {
 }
+
+.scheduledTasks {
+  padding-top: 1rem;
+}
