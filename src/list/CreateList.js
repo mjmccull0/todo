@@ -42,7 +42,11 @@ const CreateList = (props) => {
       />
       { listFormOpen &&
         <div className={styles.create_list_form}>
-          <TextInput label="List Name" onChange={handleListName} />
+          <TextInput
+            label="List Name"
+            onChange={handleListName}
+            autoFocus
+          />
           <div className="actions two">
             <Button label="Cancel" onClick={cancel} />
             <Button label="Create List" onClick={create} />
