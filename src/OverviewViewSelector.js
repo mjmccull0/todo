@@ -3,7 +3,8 @@ import { TodoContext } from 'TodoContext';
 import Button from 'common/Button';
 import { today } from 'util/date';
 
-const OverviewViewSelector = ({click, items}) => {
+const OverviewViewSelector = (props) => {
+  const {click, active} = {...props};
   const {state} = useContext(TodoContext);
 
   const countDueToday = () => {
@@ -22,11 +23,23 @@ const OverviewViewSelector = ({click, items}) => {
     return ``;
   }
 
+  const buttonLabel = [
+    { label: "List" },
+    { label: `Today ${countDueToday()}`},
+    { label: `Scheduled ${countScheduled()}`}
+  ];
+
   return (
     <>
-      <Button label="List" onClick={click} value="0" />
-      <Button label={`Today ${countDueToday()}`} onClick={click} value="1" />
-      <Button label={`Scheduled ${countScheduled()}`} onClick={click} value="2" />
+      {buttonLabel.map((button, index) => (
+        <Button
+          key={button.label}
+          label={button.label}
+          onClick={click}
+          value={index}
+          className={`${active}` === `${index}` ? 'active' : ''}
+        />
+      ))}
     </>
   );
 }
