@@ -1,5 +1,5 @@
 import React from 'react';
-import TodoItem from './TodoItem';
+import { TodoItem } from './TodoItem';
 import { today } from 'util/date';
 
 const TasksDueToday = ({items}) => {
