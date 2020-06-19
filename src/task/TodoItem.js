@@ -42,6 +42,7 @@ const TodoItem = ({item, listName, dueDate, draggable}) => {
 
   return (
     <>
+    <TodoContainer>
       <div className={`
           ${styles.todoItem}
           ${styles[item.priority]}
@@ -97,6 +98,7 @@ const TodoItem = ({item, listName, dueDate, draggable}) => {
         >
         </Collapsible> 
       </div>
+    </TodoContainer>
     </>
   );
 }
@@ -110,11 +112,15 @@ const Due = ({item}) => (
 const ListName = ({item}) => {
   const {state} = useContext(TodoContext);
   const list = state.lists.find(list => list.id === item.listId);
-  return (
-    <div className={styles.list_name}>
-      {list.name}
-    </div>
-  );
+  try {
+    return (
+      <div className={styles.list_name}>
+        {list.name}
+      </div>
+    );
+  } catch {
+    return null;
+  }
 }
 
 const Notes = ({item, handleUpdate}) => (
@@ -151,4 +157,12 @@ const Todo = ({item, expanded, toggleComplete, handleUpdate, toggleDetails, clas
   </div>
 )
 
-export default TodoItem;
+const TodoContainer = (props) => {
+  return (
+    <div className={styles.container}>
+      {props.children}
+    </div>
+  );
+}
+
+export {TodoItem, TodoContainer};
