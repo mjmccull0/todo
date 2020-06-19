@@ -3,9 +3,7 @@ import { TodoContext } from 'TodoContext';
 import TaskOverviewMenu from 'task/TaskOverviewMenu';
 import TasksDueToday from 'task/TasksDueToday';
 import ScheduledTasks from 'task/ScheduledTasks';
-
-
-import ListView from 'view/ListView';
+import Lists from './Lists';
 
 const Overview = (props) => {
   const {state} = useContext(TodoContext);
@@ -17,21 +15,28 @@ const Overview = (props) => {
 
   const view = [
     <>
-      <ListView
+      <Lists
         lists={state.lists}
-        change={change}
         onListClick={props.onListClick}
-        enterListSelectMode={props.enterListSelectMode}
-        setGrid={props.setGrid}
-        grid={props.grid}
+        onSelectView={change}
+        setDisplay={props.setDisplay}
+        display={props.display}
       />
     </>,
     <>
-      <TaskOverviewMenu  {...props} onSelectView={change} />
+      <TaskOverviewMenu
+        {...props}
+        active={viewIndex}
+        onSelectView={change}
+      />
       <TasksDueToday items={state.items} />
     </>,
     <>
-      <TaskOverviewMenu  {...props} onSelectView={change} />
+      <TaskOverviewMenu
+        {...props}
+        active={viewIndex}
+        onSelectView={change}
+      />
       <ScheduledTasks items={state.items} />
     </>
   ];
@@ -42,5 +47,6 @@ const Overview = (props) => {
     </>
   );
 }
+
 
 export default Overview;
