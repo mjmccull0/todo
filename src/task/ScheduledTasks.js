@@ -1,5 +1,5 @@
 import React from 'react';
-import TodoItem from './TodoItem';
+import { TodoItem, TodoContainer } from './TodoItem';
 import { today, tomorrow, daysBetween } from 'util/date';
 
 const ScheduledTasks = ({items}) => {
@@ -9,15 +9,17 @@ const ScheduledTasks = ({items}) => {
     <>
       {[...tasksByDate.keys()].map(date => {
         return (
-          <div key={date}>
-            {getDateHeader(date)}
-            {tasksByDate.get(date).map(task => (
-              <ol key={task.id}>
-                <li>
-                  <TodoItem item={task} listName={true} />
-                </li>
-              </ol>
-            ))}
+          <div key={date} className="scheduledTasks">
+            <TodoContainer>
+              <header>{getDateHeader(date)}</header>
+              {tasksByDate.get(date).map(task => (
+                <ol key={task.id}>
+                  <li>
+                    <TodoItem item={task} listName={true} />
+                  </li>
+                </ol>
+              ))}
+            </TodoContainer>
           </div>
         )
       })}
