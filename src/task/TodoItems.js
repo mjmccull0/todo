@@ -1,7 +1,7 @@
 import React from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import CreateTodoItem from './CreateTodoItem';
-import TodoItem from './TodoItem';
+import { TodoItem } from './TodoItem';
 import reorder from 'util/reorder';
 
 const TodoItems = (props) => {
