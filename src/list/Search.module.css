@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  width: 30%;
+  height: 1.8rem;
+  margin: 0.5rem 0;
+}
+.container span {
+  position: absolute;
+  height: 2rem;
+  width: 2rem;
+}
+
+.search_box {
+  padding-left: 2rem;
+  height: stretch;
+  width: 100%;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  background: #f2f1f0;
+}
+.close {
+  display: flex;
+  align-self: center;
+  position: absolute;
+  right: 0;
+}
+.close button {
+  border: none;
+  background: none;
+  background: transparent;
+}
+.close button:focus {
+  outline: none;
+}
+.close button:hover {
+  outline: auto;
+}

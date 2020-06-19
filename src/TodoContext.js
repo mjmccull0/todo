@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { dbConfig } from 'db/dbConfig';
 import { initDB } from 'react-indexed-db';
 import { useIndexedDB } from 'react-indexed-db';
@@ -23,6 +23,11 @@ function todoListReducer(state, action) {
       const list = {
         name: action.listName,
         complete: false,
+        color: {
+          r: 190,
+          g: 206,
+          b:221 
+        }
       };
       listStore.add(list);
       return {...state, loading: true};
@@ -32,20 +37,8 @@ function todoListReducer(state, action) {
       return {...state, selectedLists: [], loading: true};
     }
     case 'DELETE_LIST': {
-      state.selectedLists.map(listId => {
-        listStore.deleteRecord(listId);
-      });
-      return {...state, loading: true}; 
-    }
-    case 'SET_SELECTED_LISTS': {
-      let selected = state.selectedLists;
-      if (state.selectedLists.includes(action.listId)) {
-        selected = state.selectedLists.filter(id => id !== action.listId);
-      } else {
-        selected = [...selected, action.listId];
-      }
-
-      return {...state, selectedLists: [...selected]};
+      action.payload.forEach(listId => listStore.deleteRecord(listId));
+      return {...state, loading: true};
     }
     case 'ADD_LIST_ITEM': {
       const {listId, item} = {...action.payload};
@@ -126,7 +119,9 @@ function todoListReducer(state, action) {
   }
 }
 
-const useTodoLists = () => {
+const TodoContext = React.createContext(initialState);
+
+function TodoProvider(props) {
   const [state, dispatch] = useReducer(todoListReducer, initialState);
 
   useEffect(() => {
@@ -142,7 +137,11 @@ const useTodoLists = () => {
     getAllUserData();
   }, [state.loading]);
 
-  return [state, dispatch];
+  return (
+    <TodoContext.Provider value={{ state, dispatch }}>
+       {props.children}
+    </TodoContext.Provider>
+  );
 }
 
-export { useTodoLists, todoListReducer }; 
+export { TodoContext, TodoProvider };

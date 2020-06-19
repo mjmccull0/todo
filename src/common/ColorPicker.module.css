@@ -1,0 +1,30 @@
+.wrapper {
+  position: relative;
+}
+.color {
+  width: 2.4rem;
+  height: 100%;
+  border-radius: 2px;
+  max-height: 100%;
+}
+.swatch {
+  padding: 5px;
+  background: #fff;
+  border-radius: 1px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.1);
+  display: inline-block;
+  cursor: pointer;
+}
+.popover {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  top: 100%;
+}
+.cover {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}

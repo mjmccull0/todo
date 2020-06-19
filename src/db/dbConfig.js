@@ -7,7 +7,7 @@ export const dbConfig = {
       storeConfig: { keyPath: 'id', autoIncrement: true },
       storeSchema: [
         { name: 'name', keypath: 'name', options: { unique: false } },
-        { name: 'complete', keypath: 'complete', options: { unique: false } }
+        { name: 'color', keypath: 'color', options: { unique: false } }
       ]
     },
     {

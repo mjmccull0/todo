@@ -1,11 +1,11 @@
 import React from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import CreateTodoItem from './CreateTodoItem';
-import TodoItem from './TodoItem';
+import { TodoItem } from './TodoItem';
 import reorder from 'util/reorder';
 
 const TodoItems = (props) => {
-  const {listId, items, onCreateTodoItem, onReorderTodoItems, remove, update} = {...props};
+  const {listId, items, onCreateTodoItem, onReorderTodoItems} = {...props};
   const handleEnterKeyPress = (itemName) => {
     onCreateTodoItem({listId, item: {name: itemName}});
   }
@@ -28,6 +28,7 @@ const TodoItems = (props) => {
   return (
     <>
       <CreateTodoItem
+        listId={listId}
         onEnterKeyPress={(todoName) => handleEnterKeyPress(todoName)}
       />
       <DragDropContext onDragEnd={onDragEnd}>
@@ -53,8 +54,8 @@ const TodoItems = (props) => {
                          <TodoItem
                           key={item.id}
                           item={item}
-                          update={(item) => update(item)}
-                          remove={(item) => remove(item)}
+                          dueDate={true}
+                          draggable={true}
                          />
                       </div>
                      )}

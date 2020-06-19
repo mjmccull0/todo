@@ -1,12 +1,15 @@
 .main_menu {
-  height: 2rem;
+  position: sticky;
+  z-index: 1;
+  top: 0;
   background: #40403c;
-  flex-grow: 1;
+  flex-grow: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 1rem;
 }
-.main_menu > div {
+.main_menu > div,
+.main_menu > div > div {
   display: flex;
 }
 .main_menu button {
@@ -23,4 +26,10 @@
 }
 .new_list_name {
   position: absolute;
+}
+.center {
+  justify-content: center;
+}
+.right {
+  justify-content: flex-end;
 }

@@ -1,0 +1,42 @@
+.open {
+  height: auto;
+  margin-bottom: 1rem;
+}
+.header_container {
+  width: stretch;
+}
+.header {
+  display: flex;
+}
+.header:first-child {
+  flex-grow: 1;
+}
+.section {
+  width: stretch;
+}
+.toggle {
+  flex-grow: 0;
+  border:none;
+  background: transparent;
+}
+.toggle {
+  width: 2rem;
+  background: none;
+}
+.toggle.up,
+.toggle.down {
+  border: none;
+  background: none;
+  background: transparent;
+}
+.toggle.up:focus,
+.toggle.down:focus {
+  outline: none;
+}
+.toggle.up:hover,
+.toggle.down:hover {
+  outline: auto;
+}
+.toggle:hover {
+  outline: auto;
+}

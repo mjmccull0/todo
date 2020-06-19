@@ -1,12 +1,43 @@
 html {
   box-sizing: border-box;
 }
+
+body {
+  position: relative;
+  height: stretch;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.full_height {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
 *, *:before, *:after {
   box-sizing: inherit;
 }
 
 input[type=text]:focus::placeholder {
   color: transparent;
+}
+
+ol {
+  margin: 1rem 0 0 0;
+  padding: 0
+}
+
+li {
+  list-style: none;
 }
 
 .actions {
@@ -16,4 +47,11 @@ input[type=text]:focus::placeholder {
 
 .actions.two {
   grid-template-columns: 1fr 1fr;
+}
+
+input[type='checkbox'] {
+}
+
+.scheduledTasks {
+  padding-top: 1rem;
 }
