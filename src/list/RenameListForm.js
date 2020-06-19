@@ -3,15 +3,15 @@ import TextInput from 'common/TextInput';
 import Button from 'common/Button';
 import Popover from 'common/Popover';
 
-const RenameListForm = (props) => {
-  const [listName, setListName] = useState(props.list.name);
+const RenameListForm = ({list, update, cancel}) => {
+  const [listName, setListName] = useState(list.name);
 
   const handleListRename = (event) => {
     setListName(event.target.value);
   }
 
   const rename = (event) => {
-    props.rename({...props.list, name: listName});
+    update({...list, name: listName});
   }
 
   return (
@@ -20,9 +20,14 @@ const RenameListForm = (props) => {
         label="Name of Todo List"
         value={listName}
         onChange={handleListRename}
+        autoFocus
       />
       <div className="actions two">
-        <Button className="action" label="Cancel" onClick={props.cancel} />
+        <Button
+          className="action"
+          label="Cancel"
+          onClick={cancel}
+        />
         <Button className="action" label="Rename" onClick={rename} />
       </div>
     </Popover>
