@@ -3,14 +3,14 @@ import TodoItems from 'task/TodoItems';
 import { TodoContext } from 'TodoContext';
 import styles from './Tasks.module.css';
 
-const Tasks = (props) => {
+const Tasks = ({list}) => {
   const {state, dispatch} = useContext(TodoContext);
 
   return (
-    <TasksContainer color={props.list.color}>
+    <TasksContainer color={list.color}>
       <TodoItems
-          listId={props.list.id}
-          items={state.items.filter(item => item.listId === props.list.id)}
+          listId={list.id}
+          items={state.items.filter(item => item.listId === list.id)}
           onCreateTodoItem={(item) => dispatch({ type: 'ADD_LIST_ITEM', payload: item})}
           onReorderTodoItems={(items) => dispatch({ type: 'REORDER_LIST_ITEMS', payload: items})}
       />
