@@ -4,12 +4,17 @@
   height: 1.8rem;
   margin: 0.5rem 0;
 }
-.search_box {
-  padding-left: 2rem;
-  width: stretch;
-  height: stretch;
+.container span {
+  position: absolute;
+  height: 2rem;
+  width: 2rem;
 }
 
+.search_box {
+  padding-left: 2rem;
+  height: stretch;
+  width: 100%;
+}
 .wrapper {
   display: flex;
   justify-content: center;
