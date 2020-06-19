@@ -10,7 +10,10 @@ const TaskOverviewMenu = (props) => {
         <MenuButton click={props.onMenuClick} />
       }
       center={
-        <OverviewViewSelector click={props.onSelectView} />
+        <OverviewViewSelector
+          active={props.active}
+          click={props.onSelectView}
+        />
       }
     />
   )
