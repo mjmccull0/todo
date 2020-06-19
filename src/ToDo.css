@@ -2,19 +2,13 @@ html {
   box-sizing: border-box;
 }
 
-body {
-  position: relative;
-  height: stretch;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-}
-
+html,
+body,
 #root {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
 
 .full_height {

@@ -2,7 +2,6 @@ import React from 'react';
 import Header from 'common/Header';
 import MenuBar from 'common/MenuBar';
 import BackButton from 'common/BackButton';
-import MenuButton from 'common/MenuButton';
 import ColorPicker from 'common/ColorPicker';
 import {TodoContext} from 'TodoContext';
 
@@ -33,7 +32,6 @@ const TaskMenu = (props) => {
               color={props.list.color}
               change={update}
             />
-            <MenuButton />
           </>
         }
       />

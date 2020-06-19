@@ -19,6 +19,7 @@ const ListView = (props) => {
         {lists.map(list => (
           <List
             {...props}
+            key={list.id}
             list={list}
             edit={props.editId === list.id ? true : false}
           />

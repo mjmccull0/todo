@@ -60,6 +60,7 @@
   background: #f2f1f0;
   height: stretch;
   height: 100%;
+  flex-grow: 1;
 }
 .grid_item {
   display: flex;
@@ -92,9 +93,8 @@
 .list_view {
   display: flex;
   flex-direction: column;
-  height: stretch;
   background: #FFFFFF;
-  height: 100%;
+  flex-grow: 1;
 }
 .list_view > .list {
   padding: 0 1rem;
