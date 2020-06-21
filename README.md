@@ -28,11 +28,11 @@ While viewing a list's tasks it is possible to re-order the tasks by dragging it
 
 It is possible to view tasks from all lists which are due today; by clicking on the 'Today' button on the main screen.
 
-![Screenshot from 2020-06-19 11-34-24](https://user-images.githubusercontent.com/42848059/85173205-ac80e180-b240-11ea-885f-d17b0ec9d7c7.png)
+![Screenshot from 2020-06-21 13-58-32](https://user-images.githubusercontent.com/42848059/85231719-96e9f400-b3c7-11ea-8ee3-c74af5a84611.png)
 
 All scheduled tasks can be seen by clicking on the 'Scheduled' button.
 
-![Screenshot from 2020-06-19 11-34-47](https://user-images.githubusercontent.com/42848059/85173456-447ecb00-b241-11ea-8160-3cc9a63eb8b2.png)
+![Screenshot from 2020-06-21 13-58-37](https://user-images.githubusercontent.com/42848059/85231727-a0735c00-b3c7-11ea-91b1-72a2e31ed791.png)
 
 To rename and delete lists enter select mode, by clicking the click button in the upper-right corner.  In select mode, clicking on a list will select or de-select the list; instead of displaying the list's items.  Clicking the rename button in the lower-left corner will rename a singularly selected list.  Deleting of singular or multiple selected list is supported.
 
@@ -43,3 +43,4 @@ To rename and delete lists enter select mode, by clicking the click button in th
 Lists can be filtered by searching for list names.
 
 ![Screenshot from 2020-06-19 11-36-28](https://user-images.githubusercontent.com/42848059/85174349-2fa33700-b243-11ea-923a-ac0da9bd5d1d.png)
+
